@@ -366,3 +366,77 @@ Two elements related to images are `<figure> and <figcaption>` this provides the
 ## 6. Media
 
 - **Audio**
+
+Images aren't the only media we put on a site, audio and video files are supported too by HTML. We can use the `<audio>` element to place audio files on a webpage. HTML is simple and can create the browser to create an interface and play audio for us. Structure of audio element is similar to img element. `<audio>` element has both opening and closing tag. `src` attribute is used to provide the url to the file. A simple `<audio src="sample.mp3"></audio>` doesn't do much, we have to tell the browser that we want the browser to provide some controls such as play button, timeline and a volume control.
+
+Using the controls that are built into the browser is optional, and we can make our own controls as well using JS and the HTML media element API.
+
+```html
+<audio controls src="sample.mp3"></audio>
+```
+
+`audio` element is a good example of power of HTML to provide a bunch of functionality that maybe we just don't want to bother build ourselves, and use what browser provides. Other attributes that we can use with audio are: `loop, autoplay`. Reason we have opening and closing tag in audio is because at times we might use `src` element to specify more than one audio file much like we could with the picture element.
+
+Maybe we want to use a new file format that's not supported in every browser so in the process you provide a fallback to some another file for older browsers.
+
+```html
+<audio controls loop autoplay>
+  <source src="birds.ogg" type="audio/ogg; codec=opus" />
+  <source src="birds.mp3" type="audio/mpeg; codec=mpeg" />
+  <!-- Out of the 2 above, the browser will use the file that it understands first. -->
+</audio>
+```
+
+MP3 is supported in most modern browsers today, OGG is another file format that had some advantages but never became popular
+
+- **Video**
+
+Films, videos and teaching have all been transformed due to the ability of web to transmit video. We use the `<video>` element just like audio and we use `src` attribute to point to a video file and we add the `controls` attribute to tell the browser to create a video player for us. Say we have `720p x 480p` resolution file, i.e. 720p wide and 480p tall, compressed using h.264 codec and delivered as an MP4 file.
+
+H.264 codec has the widest support across browsers, much like chosing between JPEG and PNG. There are a bunch of different codecs in which a video file might be encoded. Video files contain a lot of data and can get incredibly big when they aren't compressed, far too big to be sent and presented in an efficient manner, so it's safe to say any internet video is using a pretty hefty mechanism when it comes to delivery.
+
+There have been many attempts to make the one fits all size codec some of the notable examples being Real Video, Sorenson, Windows Media, FLV, H.263. From about 2015 to 2020, H.264 codec is the one that has dominated and been used widely, but the thing is H.264 isn't open source, it's patented, it's owned by a consortium that charges fees for every device, every OS, every browser, every camera anything that wants to be able to record, compress or play H.264 files and they are about to charge way more for H.265 files.
+
+None of the image file formats that we use are owned by someone who's charging licensing fees, they're all public and anyone can use JPEG or GIF, none of the underlying technology HTML, CSS isn't patented, why should video codecs be different? The answer to that is, a lot of effort has gone into creating a truly open, not patented but still super awesome video code. Folks had hoped WebM would emerge as the winner but it's still unclear if it will.
+
+AV1 is another codec that is looking like it might be better than H.264 and this is truly royalty free. Video element just like audio has the ability that allows us to point to more than one codec at the same time.
+
+```html
+<video controls>
+  <source src="birds.webm" type="video/webm" />
+  <source src="birds.mp4" type="video/mp4" />
+  <!-- Out of the 2 above, the browser will use the file that it understands first. -->
+</video>
+```
+
+We have img srcset but there's nothing in HTML that will allow us to send different sizes of video under different network conditions. It's due to the fact that we do not want device only one moment to make a choice between say receiving `1080p` or `360p` at times initially internet is slow but speed increases and then it is better to send vidoe of better resolution. The options for video formats are: `144p, 240p, 360p, 480p, 720p, 1080p, 2k, 4k`
+
+This is how YouTube, Hulu, HBO, Netflix, Vimeo and other TV apps work by switching constantly from one resolution to another as people watch using a technique called adaptive bitrate streaming. This entire thing is pretty complicated and basically it needs a server farm of transcoding robots which is why when you go to put video on a website it is likely you might not use `video` element, there's a good chance you will use embed code from a video hosting service which we will talk about later on.
+
+- **Captions and Subtitles**
+
+We can put audio and video on the websites, but not everyone can hear or understand the audio. Some people are completely deaf, other people can hear sometimes but not all of it sometimes due to certain conditions, say construction noise around them etc. On web we have the ability to provide the content in multiple ways simultanously, adding captionas allows us to make our videos more accessible to everyone. To do this we will use the track element and point to a text file. The video player will provide all the functionality so a viewer can turn captioning on and off, or switch from one set of subtitles to another.
+
+There are many file formats for captions, but on the web we want to use webvtt, web video text tracks. It's a plain text file with a vtt extension that uses a certain convention for providing the information. We put `<track>` element inside the video element just like the sources element, it's part of the list of options for the browser to use while rendering the video player.
+
+On the `track` element we use the `src` attribute to point to the file itself. We will use `kind` attribute to tell the browser that it is captions and `label` attribute we will set English, so that in the player English is shown as option to select this caption, `srclang` attribute and `default` to tell browser this is the track that we want loaded when user turns on captions.
+
+```html
+<video controls>
+  <source src="birds.webm" type="video/webm" />
+  <source src="birds.mp4" type="video/mp4" />
+  <track src="birds.vtt" kind="captions" label="english" srclang="en" default />
+</video>
+```
+
+There are a few options available for the kind attribute, we could create a vtt file that has the scripted information about what's happening visually in the video and use `<kind="descriptions">`, this makes the video more accessible to the visually impaired people. `kind="chapters"` gives users a way to jump from one section to another in the video by listing the chapters in video.
+
+- **Embedding Other Media Through iFrames**
+
+It is possible and more likely that you will be using a video hosting service and embed the video that the hosting service provides onto your webpage using embedding.
+
+`Embedding`: Placing content from one site into the body of a page on another site. There's all kinds of content that we might want to embed onto a page. We can embed a map from Google or Mapbox, a code demo from CodePen or Glitch, slide deck from Speaker Deck or Notist. It is common to embed something complex from a service that takes care of all the hard parts for you. You get the html from the service you are using and you just have to insert it in your html using `iframe` element. `iframe` has attributes such as `width`, `height`, `frameborder`, `allowfullscreen`, `allow` etc.
+
+iframes though powerful, but there are some security considerations to be had about pulling in code from other sites like this. So if you are using a CMS that someone else set up, say your job is to post content on WordPress websites or Drupal websites, then there is a good chance that you can't just paste some random embed code form another website into your system. There's a good chance that the CMS is set up with a different way to allow a URL or a shortcode from a specifically white-labeled source. And you might have to talk to someone who knows how to use your CMS to find out how to embed things like YouTube videos.
+
+If you are the one building the site, then you probably need to think about how the security will work when it comes to iframe element. If a group of people will be entering content into a system, you can't allow all iframes without some sort of verification.
