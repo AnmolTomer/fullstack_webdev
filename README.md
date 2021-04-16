@@ -8,7 +8,7 @@ Course contains 17 modules and helps you to gain skills to work with both front 
 
 ## Course Modules:
 
-1. HTML Essential Training
+1. [HTML Essential Training](./01_HTML_Essential_Training/README.md)
 2. CSS Essential Training
 3. JavaScript Essential Training
 4. Learning ECMAScript 6+ (ES6+)
