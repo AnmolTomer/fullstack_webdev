@@ -440,3 +440,236 @@ It is possible and more likely that you will be using a video hosting service an
 iframes though powerful, but there are some security considerations to be had about pulling in code from other sites like this. So if you are using a CMS that someone else set up, say your job is to post content on WordPress websites or Drupal websites, then there is a good chance that you can't just paste some random embed code form another website into your system. There's a good chance that the CMS is set up with a different way to allow a URL or a shortcode from a specifically white-labeled source. And you might have to talk to someone who knows how to use your CMS to find out how to embed things like YouTube videos.
 
 If you are the one building the site, then you probably need to think about how the security will work when it comes to iframe element. If a group of people will be entering content into a system, you can't allow all iframes without some sort of verification.
+
+---
+
+## 7. More Ways to Identify Content
+
+- **Supporting Languages**
+
+The web by its nature is global, we as humans speak 100s of different languages, there are several tools in HTML which we want to use to make sure it's clear in which language our content is in to the browser and search engines. This can help your sites to be listed properly, the right dictionaries will show up for spell checkers, when content is read aloud by a browser, it's more likely that the words will get pronounced incorrectly. So to avoid that we want computers to know in which language the content is in.
+
+`lang` attribute with `html` element is used to do this. We set the language on the outermost element, if our whole page is in the same language. We might have to do it only once, say in a template file, that gets propagated to the entire site.
+
+`lang` attribute is an **universal attribute**, i.e. we can put it on any element. We should also specify in which direction our content flows when being read, most languages in the world flow from left to right, but some flow from right to left. Specify the direction using `dir` attribute. It's an universal attribute that can go on any element. If all the content i.e. lang and dir is same on your page, define it only once on the outer HTML element.
+
+Be sure to set your `charset` for the project, it defines the alphabet or set of characters for the script language. Original digital charsets were very limited and only supported the latin alphabet i.e. `ASCII` an encoding standard limited to 128 characters, focused on the needs of certain European languages. These days most of the projects use unicode specifically `UTF-8`, it is an universal encoding standard for characters encompassing many languages.
+
+When unicode started in 1991, it had defiend 7000 characters, now it has over 137,000 characters in an attempt to support every language, script, including Braille, sign writing, musical notation and almost 3,000 emojis. To specify the charset you are using to the browser, we simply write `<meta charset="UTF-8">`.
+
+When the web was first invented, it made way too many assumptions about the languages and scripts people are using, and it only supported a few. Decades of work has gone into making sure that everyone is included equally. By defining the lang, dir and charset for your project you can ensure that the future of the web far more inclusive.
+
+- **Generic Elements: Div and Span**
+
+What about a scenario when you need an element and there isn't one for your particular situation? Sometimes we just need a way to wrap a group of elements or to mark a phrase so that we can combine them and apply certain css hover effect on them, or we just need to target a part of DOM with CSS or JS.
+
+When none of the other elements make sense, that's when you should think of using `div` and `span` elements. Don't just use divs and spans for everything, a lot of users will have weird issues in terms of accessibility, use the proper HTML element for the task at hand.
+
+That said, sometimes we do just need a generic element. `<div>` is a block level element. `<span>` is an inline element. They both do the same thing, i.e. nothing, until you point CSS or JS at them.
+
+```html
+<article lang="en-IN">
+  <h1>This is the headline</h1>
+  <div class="box">
+    <!-- div being a block level element, takes in all the paragraph elements -->
+    <p>The first paragraph.</p>
+    <p>Some text in second paragraph.</p>
+    <p>Third paragraph.</p>
+    <p>Fourth paragraph.</p>
+  </div>
+</article>
+```
+
+Div and span can take all the global attributes such as class, id, lang and aria roles. Div and span are handy, but don't let that be an excuse to write bad html.
+
+---
+
+## 8. Putting it all together
+
+- **The HTML Page**
+
+HTML files are the key building block of the web. Anytime anyone wants to go to a website, they start by opening up some kind of web browser or web view, and going to a URL, maybe they type the URL into the address bar, maybe they started with a search or clicked on a link, maybe they openend an app which triggered an implicit action of opening a certain url. However it happens, if there is a URL involved a web server responds to the request by sending the specific HTML file that lives at that address.
+
+In 90s when web was new, everything needed to display was put inside one HTML file, that's not what is used now, it's gotten a lot more complicated now. Text frequently is stored in a database or multiple static files often pull together in the last millisecond, custom for each user. Visual styling is in CSS files, logic in the js files and so on.
+
+What a user actually sees once the page is loaded these days is usually assembled from a mishmash of different files. No matter how the website is engineered the web itself works this same every time. The HTML file that's returned in response to a request for a webpage is really important, it acts as headquarters for everything else that happens after the first moment of the site loading.
+
+When browser receives the file from server, it immediately starts reading it from top to bottom and starts to do (display) what it says. At the top in `<head>` element there is a list of files to be imported, these can be css files, javascript files etc. and browser immediately requests for them at specified urls, and once browser has these files then it continues to do actions specified in those imported files as well.
+
+The structure of HTML file, the key parts that every html page should have are as follows:
+
+1. `doctype Declaration`: This statement declares which era HTML file is from. By doing so we tell the browser that this webpage sticks to modern web practices and render this as such.
+
+2. Opening and closing html tags, typically looks like `<!doctype html> ... </html>`
+
+3. Language, direction of the webpage using lang and dir attributes.
+
+4. Head and body. Head is about all the metadata, all the information that the browser needs to know, though this head section part won't be displayed on the page. Body contains the information and content that will be displayed on the page.
+
+- **Document Head**
+
+What goes inside head? Information about the website that you want the browser to know goes inside the head element. We use `meta` element for this info to be delivered to the browser. Use meta elements only inside the head, to convey metadata about the page. We use `charset` attribtue to define character set. `<title>` contains the title that will be shown on the tab for the name of the web page, if you don't define it then it will just be address of the page.
+
+The `<meta>` element can be used to define all kinds of settings. One incredibly common use is to tell the browser that the layout has been morphed to fit small screens, that it is a responsive website. Without the meta tag which goes as following:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+```
+
+Without the line above browser assumes that the page is using an older technique for layout, that it's a desktop layout that needs to be shrunk down to be shown on small screen devices. We should also add a description for the website, this will be shown in search engine results. Meta tag is used to give the page a name when it is saved to home screen and to specify tile image and a background color.
+
+Ever copied a link to slack, discord or some other place and you see that link turn into a great little card, that's set up using meta tags. There are many techniques which make use of meta tag to refine the experience of your site.
+
+Another important element we use a lot inside the head element is link element. This is used to link to a range of other assets that we want to load like CSS files, fonts and favicons.
+
+`rel` attribute tells the browser what kind of asset it is, stylesheet, script etc.
+
+`href` attribute provides the url of the asset. Following are examples of links to a CSS file (stylesheet).
+
+```html
+<link href="main.css" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" />
+<!-- link to preload font file -->
+<link
+  rel="preload"
+  href="myFont.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin="anonymous"
+/>
+```
+
+`script`: This element goes into the head and tells the browser location of a js file that we want to load. Usually people also put the js files at the end of their webpages so that the browser loads the html files at the end once everything else is loaded.
+
+```html
+<script src="js_file.js"></script>
+```
+
+HTML head is a place to get everything connected and make sure that other assets are loaded and to provide data about the page to the browsers as well as search engines.
+
+- **Structuring Content**
+
+What goes on inside the body, now that we have gone over head in depth? There are 6 major elements here to learn about: `main`, `header`, `footer`, `article`, `section` and `aside`.
+
+`main`: Wraps around main content of the page. Only used once per webpage, and tells the browser this is where the main content is.
+
+`header` and `footer`: Used to mark the places on the webpage where the content is header and footer. `head` is part of HTML document that's never displayed, don't confuse `header` with `head`.
+
+`header` is used to wrap site headers, article headers, headers in the content. Most webpages have a header at the top, with logo, site-avigation, site-name etc. Many webpages end with a footer at the bottom, with lists of links, some copyright information, ToS etc.
+
+`article` wrapped around any instance of an article. It might be a long written article or blog post, or it might be a very short snip, a teaser card can be marked up as an article element, a tweet or social media post embedded as well can be an article. Article element just means that hey, this thing here, by iteself this is a unit of content, consider this as something that stands on its own as a useful or usable thing.
+
+`section`: This is used to wrap around sections of content. If we have a long essay for instance and it is broken up into chunks with sub headlines, then we can use the section element to mark each segment. Or we may have zones on our website, a section towards the top, that's about one topic and another section further down that's about something else. Section is a flexible element that means, that vaguely just says okay let's just start with another thing. Usually each section has its own headline, marking the start of a new segment of content.
+
+`aside`: This is for marking something that's off to the side. Something in a side bar, or any content that's kind of not the main attraction. Say an inset panel that goes with a big article that gives additional info but isn't quite part of the flow of the article itself, or ads, and are best marked as an `aside`.
+
+`main` element is used once per page to wrap around the main content on that page. The header, footer, article, section and aside elements are the five sectioning element in HTML.
+
+---
+
+## 9. Forms and Interactive Elements
+
+- **HTML Form Basics**
+
+Form fields have been an integral part of the web for decades. Forms on the web are how we get things done. We log into sites through forms, we buy through forms, request a search, upload profile pictures, add content to a site etc. These interactions all occur through form elements, or they should happen through semantic form elements and not through divs and spans.
+
+We tap into the power that's built into browser, by using HTML forms, and saves us a lot of wasted effort when it comes to trying to recreate in custom JavaScript, what's already there in the browser. We ensure that our forms work on every device and for every possible combination of input and output hardware, including devices we have never heard of.
+
+```html
+<form action="success.html" method="get">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required placeholder="Your Name"></input>
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required placeholder="email_id@domain.com"></input>
+  <button type="submit">Sign Up</button>
+</form>
+```
+
+We use get method here, not safe for practical website, it's just a demo, keep that in mind. We have an `action` and `method` attribute here. **Never use get on a real website.** The name attribtue in input tells the backend what name of data to look out for. `for` and `id` attribute of `label` and `input` element allows us to connect the form's label with input box to make it more accessible. `type` attribute in the name tells the browser what to expect, say email, or text or anything else, and gives us client side validation for free.
+
+We use `type` attribute in button to tell the browser that our button is a Submit button and on clicking that, action defined in opening of `form` should be executed. We can also add required `attribute` in input to tell the browser that this field cannot be blank. To pre-populate a formfield with a sample of input data, we can use the `placeholder` attribute and put a sample or suggestion of what a field expects. User shouldn't erase what's in the field, use `placeholder` attribtue not `value` attribute as you'd have to erase before entering data in the input field if you use `value` attribute. Value attribute is good if you want to pre-populate a form with what you think is the right answer for the user, but gives user to change it too if they want. If it's right user needn't do anything and they just proceed to other input fields in the form.
+
+- **Additional Form Element Types**
+
+Other options for collecting different kinds of data include telephone number, search query, password etc.
+
+```html
+<form action="success.html" method="get">
+
+  <!-- Name -->
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required placeholder="Your Name"></input>
+
+  <!-- Email -->
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required placeholder="email_id@domain.com"></input>
+
+  <!-- Password -->
+  <label for="pass">Password</label>
+  <input type="password" id="pass" name="pass" required placeholder="Enter password"></input>
+
+  <!-- Search -->
+  <label for="search">Search</label>
+  <input type="search" id="search" name="search" required placeholder="Search Query"></input>
+
+  <!-- Phone -->
+  <label for="phone">Phone</label>
+  <input type="tel" id="phone" name="phone" required placeholder="Contact"></input>
+
+  <!-- Textarea -->
+  <label for="textarea">Text Area</label>
+  <input type="textarea" id="textarea" name="textarea" cols="30" rows="15"></input>
+
+  <!-- Date -->
+  <label for="date">Date</label>
+  <input type="date" id="date" name="date"></input>
+
+  <!-- Color -->
+  <label for="color">Color</label>
+  <input type="color" id="color" name="color"></input>
+
+  <!-- File -->
+  <label for="file">File</label>
+  <input type="file" id="file" name="file" accept="image/*" multiple></input>
+
+  <!-- Submit -->
+  <button type="submit">Sign Up</button>
+
+</form>
+```
+
+---
+
+## 10. Structuring Tabular Data
+
+- **When to use tables**
+
+Whole point of semantic HTMl is to tell computers everywhere what a particular thing is, and use proper HTML elements for that thing. Long time ago, we didn't have CSS (yeah it's that long ago) at that time laying out our content on a web page had not been invented yet. So during this time people did all kind of messy things to try and create styling and layout. Devs used to typeset headlines in Photoshop, export it as an image, so people looking at the web page saw it as something beautiful and typed just like webmaster wanted. Problem was, it wasn't actually an headline, it was a picture of a headline. Without any tools to layout the content, people used to take the content, break it up into a lot of little pieces, and jam all those pieces into the cells of an HTML table, and just pretended everything was okay and good to ship.
+
+It was a horrible hack, though it looked okay or even good at times but the semantics were terrible. Content wasn't accessible, wasn't reusable and hard to find to say the least. There is still one place, where people use this technique, `HTML email`. It is hard to do, and creates a terrible experience for many users but it's really all we have in the world of email, atleast for now.
+
+What should we be using HTML tables for? Well duhh, tabular data! A chart of data from a research project, election results, product comparisons, population data, schedules. If using the table makes the comparison easy and makes understanding of the content easier, then use the table in HTML to semantically mark it up.
+
+- **Building table rows**
+
+To create an HTML table, we use several different elements in just the right combination. `<table>, <tr>, <th> and <td>`.
+
+![](https://i.imgur.com/5lQZr40.png)
+
+---
+
+## Conclusion
+
+HTML is an important part of the web and full stack development. If you use the right HTML element for the right job, you start from a place of great strength. Making your project understandable to voice interfaces, search engines, social media, harnessing the power that's built into modern browsers for a variety of devices and users.
+
+There's so much more to HTML, we have just touched the basics here. Language continues to evolve slowly. There are many great resources for finding more about HTML, and quickly looking something up. [MDN Web Docs](https://developer.mozilla.org/en-US/) is one such place to find authorative reference documentation.
+
+The canonical source of truth about any web technology is the specification, the web standard document from which that technology came. The web and all of its parts as we know, HTML, URL, HTTP, CSS, JS each of these technologies exist because a group of people collaborated on a plan for that technology. Representatives from all the browser maker organizations plus many others connect and work together in groups to discuss and debate what each language could or should do. Their decisions are written up in official documents called specifications and these specifications are closely followed as directions when browser engineers go to add a new feature to their browser.
+
+This process is what people mean when they talk about `web standards`. The way the browsers do something, is standardized in an official document, to keep it uniform across every browser. The HTML specification that was most recently numbered is version 5 i.e. HTML5 and came out in 2014. There have been some talks about dropping the numbers and sticking to HTML5 and calling it as the living standard.
+
+[HTML Specification - Developer's Edition](https://html.spec.whatwg.org/dev/infrastructure.html)
+
+[Web Content Accessibility (WCAG) Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/)
+
+HTML doesn't changes very often, so knowing what you have seen here, will set you up for a long time.
