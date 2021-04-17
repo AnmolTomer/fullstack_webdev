@@ -68,3 +68,33 @@ Import method however is used with CSS preprocessors such as SASS and or LESS or
 For placeholder text you can visit [Meet the Ipsums](https://meettheipsums.com/).
 
 - **Optimizing Images and Retina Displays**
+
+When using images within you websites, there are many ways to optimize for performance and search engine optimization. More on this at [shopify blog](https://www.shopify.com/blog/7412852-10-must-know-image-optimization-tips).
+
+Choosing the right dimension of the image is very crucial. For instance if you use an image taken from phone, it will have a resolution of `4000x3000` pixels which would be really slow to load on any device irrespective of connection speed. For css_portfolio project, thumbnails will be only 300 pixels wide, so instead of loading a large image and resizing it using CSS, that would be an unnecessary load on the webpage. Especially for mobile phones, which may have restrictions on data or internet speeds. But instead of cropping the images to 300 pixels, we actually want it to be 600 pixels, reason for this is due to Apple's `Retina display`.
+
+This is a trademark term coined by Apple which is used to describe their high pixel density screens. Not long after retina displays were introduced other manufacturers have their own versions of this technology. While retina is an apple specific term it's little easier to say that `high pixel density screen`. Pixel density refers to how many pixels are there within a space. Usually Pixel Density is measured by `pixels per inch (PPI)` or `dots per inch (DPI)`.
+
+Retina displays have double the number of `PPI/DPI` and can fit two pixels within the same width and height of a non retina display. The more pixels there are within the same area, the smaller the pixels are which is how text and images appear smoother, cleaner and shows more detail. A simple way to support retina in non retina screens is to use the image twice the size. Say your thumbnail image area is 300 pixels wide, so if we use an image file that is 600 pixels wide, then resize it to 300 pixels with CSS, we are adding double the amount of pixels within the same dimension, just like Retina displays.
+
+For both retina and non-retina screens this image will now be displayed as 300px wide, but for retina displays additionally image will appear more crisp.
+
+For css_portfolio project we use project thumbnails as 600px width, for Background images 1400px to 2000px width images should work without any issues. When you resize the width of an image, the height gets resized automatically as well.
+
+- **Relative Paths**
+
+Building websites often includes linking different files together, such as embedding an image in the html, or referencing a CSS file etc. When linking files within the same project, use a relative path. The path is determined by where a file is located within the directory.
+
+![](https://i.imgur.com/dyVJygd.png)
+
+If file you are linking to is contained within a directory then folder name must also be included in the file path. We have included the vim_vs.png in our index.html and as we can see on `index.html` image displayed on webpage by default is same as image resolution. Now we use the css to resize the images.
+
+We create a folder named css and inside it save our `styles.css` file.
+
+- **Absolute Paths**
+
+Absolute Paths refers to a resource located on a server, so the entire URL, including HTTP and full domain name must be referenced. Used for linking to pages outside our website. Websites have subsections and other pages that we can also link to.
+
+There are services created for the purpose of hosting web resources for people to use. One such service is [picsum](https://picsum.photos/).
+
+We will stick to absolute path for outside resources and relative paths for referencing files we have in our repo.
