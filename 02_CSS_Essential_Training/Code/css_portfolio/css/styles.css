@@ -22,6 +22,14 @@ img {
     width: 300px;
 }
 
+a {
+    color: #FFE66D;
+}
+
+/* Hover color over links*/
+a:hover {
+    text-decoration: none;
+}
 
 /* Profile
 ----------------------------------------*/
@@ -32,8 +40,35 @@ header {
 
 /* Projects
 ----------------------------------------*/
-.project {
+.projects {
     background: #F7FFF7;
+}
+
+.projects a {
+    color: #A0C4FF;
+}
+
+.projects a:hover {
+    background: #023E8A;
+}
+
+/* Override link using descendant selector as bg is light, yellow looks bad */
+
+.projects .btn {
+    color: #F7FFF7;
+    background: #2F3061;
+    /*Remove underline in link*/
+    text-decoration: none;
+    /* Padding to add space between words to make it look like button*/
+    padding: 8px;
+    /* Rounding corners for button effect, bigger the number more rounded edges will be */
+    border-radius: 4px;
+    /* Hover style using opacity https://www.webfx.com/web-design/hex-to-rgb/*/
+}
+
+.projects .btn:hover {
+    /* alpha (a) for opacity */
+    background: rgba(47, 48, 97, 80%);
 }
 
 /* Work Experience
