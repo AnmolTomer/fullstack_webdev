@@ -652,3 +652,58 @@ border-color: red;
 - Using [@font-face guide](https://css-tricks.com/snippets/css/using-font-face/) from csstricks.
 
 - Another option of using fonts is with an online service such as [adobe fonts](http://fonts.adobe.com/) or [google fonts](https://fonts.google.com/). With web font services we link directly to the css stored on the server.
+
+### Font-size Property
+
+- Defines the size of the font and can be used with a variety of value types. Relative values are calculated based on the nearest ancestor element. Absolute values are fixed and are not affected by any ancestor elements. Both relative and absolute font sizes are inherited by descendant elements.
+
+- Computer screens are measured in pixels, which is an absolute value. This is an ideal unit for accuracy. Numeric values with pixels are preferred and better if you stick to whole numbers as different browsers `interpret decimal values inconsistently`. Browser default size of document size is `16px` with exception of headings as it depends on level.
+
+- `em` unit was historically used in typography to measure width. In CSS `em` is a relative unit and in terms of size it is related to its closest ancestor element's font size. Unlike pixels it is common to use decimal points with em based relative sizing. 1em = inherited font-size, and if no font-size is declared then one 1em becomes equal to default browser font-size. Changing the font-size in the parent or ancestor element will change the value of the child element.
+
+- Rem stands for root em and was introduced after the em unit and is similar in usage. Rem is only relative to the root element i.e. html element. Sizing of the parent or ancestor element doesn't affects the rem unit.
+
+- [CodePen Link](https://codepen.io/anmoltomer/pen/QWpNxga)
+
+- Using relative values can be tricky initially but it can be useful especially for making changes for different screen sizes. E.g. we may want to reduce font sizes for smaller screens, instead of changing size for various elements we can use rem here and change the HTML value. When getting started with CSS pixels are a good way to get up and running. To learn more on length and keyword values you can chack out MDN docs on font-size [here](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)
+
+### Font Shorthand
+
+- Font Shorthand is shorthand for 6 properties viz font-style, font-size, font-weight, font-family, font-variant and line height. Below we see a comparison between longhand and shorthand
+
+```css
+/* shorthand */
+font: italic small-caps bold 24px/1.5 Helvetica, sans-serif;
+
+/* longhand */
+font-style: italic;
+font-variant: small-caps;
+font-weight: bold;
+font-size: 24px;
+line-height: 1.5;
+font-family: Helvetica, sans-serif;
+```
+
+- Order matters in short hand. font-style, font-variant and font-weight must precede font-size. font-variant should only be specified using small-caps or normal value, line-height must immediately follow font-size preceded by `/`. font-family must be the last value specified.
+
+- More information on MDN font docs [here](https://developer.mozilla.org/en-US/docs/Web/CSS/font)
+
+### Text-decoration, text-align and line-height
+
+- There are more properties to add various styles to text. `text-decoration:none` is used frequently to remove underline from links, we can also define color and style as text-decoration actually represents 3 longhand properties, below is a comparison between longhand vs shorthand. More on MDN docs [here](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration)
+
+```css
+/* shorthand */
+text-decoration: underline red solid;
+
+/* longhand */
+text-decoration-line: underline;
+text-decoration-color: red;
+text-decoration-style: solid;
+```
+
+- `text-align` used to align content within a block element. It can be added to the element itself or we can set the property in parent element so the style can be inherited. Another common property is line-height property that sets the height of the space between two lines of text. Closely related to font-size.
+
+- `line-height` used to set space between the lines of the content. `line-height` can be used with pixels, unitless numeric values, or percentages.
+
+- [CodePen Link](https://codepen.io/anmoltomer/pen/vYxGrqx)

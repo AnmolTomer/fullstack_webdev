@@ -18,6 +18,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
 
@@ -34,8 +36,13 @@ a:hover {
     text-decoration: none;
 }
 
+h1 {
+    font-size: 100px;
+    line-height: 1;
+}
+
 h2 {
-    margin: 0;
+    font-size: 45px;
 }
 
 /* Apply curvice font-face to both h1 and h2 */
@@ -43,7 +50,8 @@ h2 {
 h1,
 h2 {
     font-family: 'Caveat', cursive;
-    /* font-size: 60px; */
+    font-weight: 400;
+    margin: 0;
 }
 
 .content-wrap {
