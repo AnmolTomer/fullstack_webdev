@@ -457,3 +457,198 @@ p {
 ### Psuedo-class selectors and links
 
 - [Codepen Link](https://codepen.io/anmoltomer/pen/XWMbXov?editors=1100)
+
+---
+
+## 3. The Box Model
+
+### Intro to the Box Model
+
+- Now that we have seen some core CSS concepts, now we will see how HTML elements are rendered in the browser. We see text and images but to the browser every single element is displayed as a rectangular box, whether it's an image, paragraph or a link in a paragraph, each of these elements is an individual box. This is called CSS box model. It is a set of rules that defines how elements are sized, total amount of space these elements take up and where they are positioned in realtion to each other.
+
+- Before we incorporate layout methods such as float, flexbox or grid, we first have to understand the box model. This is the foundation of layout on the web. We will see how elements occupy space on web page based on type of element, inline or block. Then we will see 5 properties that make up the box model: `Width, Height, Padding, Margin, Border`.
+
+### Inline, Block and Display
+
+- Here we see how HTML elements occupy space. There are 2 kinds of HTML elements inline and block-level. `Inline` elements take up the same space as their content contained within the tags. Elements are displayed in a line, from the left and elements will only wrap when they cannot fit on the same line within its container. Common inline elements are anchor tags, span and strong.
+
+- `Block Elements` have the same height as their content but they span the entire width of their containing element, even if the content itself doesn't expands in entire width. This is the reason why block elements always start on a new line and stack on top of each other. The majority of elements are block level. Some common ones are paragraph, heading, article and section.
+
+- `display`: The display property can be used to change the default behavior of inline and block level elements, using a value of `block`, `inline` or `inline-block`. A simple way to check if an element is block or inline is see how it displays when you add two elements next to each other. [CodePen Link](https://codepen.io/anmoltomer/pen/qBrdZgV?editors=1100)
+
+### The box model and properties
+
+- The CSS block model describes the rectangular boxes that are generated for each HTML element. Each box has 4 parts, content box has actual content between the HTML tags such as text, or an image. `Padding` area surrounds `content` area, then `border` surrounds the padding area and `margin` surrounds the entire element. These four together determine the total area of each element.
+
+![](https://i.imgur.com/OY6CjnZ.png)
+
+- There are 5 CSS box properties viz: `width` and `height` sets the width and height of content area, padding adds or removes the space within the element. Margin adds or removes the space around the element, and border is added between padding and margin.
+
+![](https://i.imgur.com/4mtuUv3.png)
+
+- We saw different types of CSS values and units. For box properties `%` and `length` data types are used. When % unit is used, it is defined by the size of its containing element. E.g. if container has width of 1000px, then inside container will be 500px if the width is set to 50%. If you change width of container then the % width will change as well.
+
+- There are many types of absolute units such as cm, mm, inch, px, pc (1/6) of an inch, pt point = 1/72 of an inch. For websites if you are using an absolute length unit such as px then stick to that. Relative length unit are dependent on the length of another element. em and rem are defined by font-size of the parent element and the root element respt. More on font sizing with relative unit in typography section. Using relative units can be useful for making flexible layouts that display well across different screen sizes. `em` represents the inherited font size of the element, `rem` represents the font-size of the root element.
+
+- Learning relative sizing can be a bit tricky when you are just getting started with CSS and can be a bit more advanced, so here we stick to px and % for using box properties.
+
+### The box properties syntax and usage
+
+- `width and height`: The width and height properties change the size of the content box. Inline elements require the display property with them.
+
+```css
+/* Block Element */
+div {
+  width: 100px;
+  height: 100px;
+}
+
+/* Inline-element */
+span {
+  width: 100px;
+  height: 100px;
+  display: block;
+  /* or */
+  display: inline-block;
+}
+```
+
+- `padding`: Padding property adds or removes the space inside of the element but around the content box.
+
+```css
+/* longhand */
+padding-top: 2px;
+padding-right: 2px;
+padding-bottom: 2px;
+padding-left: 2px;
+
+/* shorthand  with 4 values in the order of as if you are making a square clockwise starting from 12 o'clock 🔝 ▶ ⤵ ⬅ */
+padding: 2px 2px 2px 2px;
+
+/* shorthand with 2 values means top & bottom, left and right */
+padding: 2px; /* Same on all sides */
+padding: 2px 10px; /* 2 px on top and bottom, 10px on left and right */
+padding: 2px 10px 5px; /* 2 px on top, 10px on left and right, 5px on bottom bottom */
+
+/* Mixing different types of length units */
+
+padding: 10px 2%; /*top & bottom, right & left*/
+
+/* If an element already has a default padding style, mostly defined in User Agent Stylesheet (UAS) in that case you can define padding to override that in your style.css by setting padding to 0 to remove the space*/
+
+/* Some of the examples of overriding UAS */
+padding: 0px;
+padding: 0;
+padding: 2px 0;
+
+/* Can't have negative numbers so what we have below is invalid */
+padding: 2; /*✅✅*/
+padding: -10; /* ❌❌*/
+```
+
+- `margin`: Margin property is used to add or remove space around an element. Rules for margin and padding are almost same, there is a small addition in case of margins that **margin can also be used with the keyword** `auto` and negative values, more on this later.
+
+```css
+/* longhand */
+margin-top: 2px;
+margin-right: 2px;
+margin-bottom: 2px;
+margin-left: 2px;
+
+/* shorthand */
+margin: 2px;
+```
+
+- `border`: Border property display a border between the margin and padding of an element. Border property is shorthand for `border-width`, `border-style` and `border-color`. When using the shorthand syntax for border, `order of values do not matter`.
+
+- For `border-width` property any length can be used as well as keywords `thin, medium and thick`, for `border-color` rgb, hex or any other kind of color values, for border-style we have lots of options to choose from such as: `none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset` etc. More on borders in MDN Documentation [here](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+```css
+/* shorthand */
+border: 2px solid red;
+
+/* longhand */
+border-width: 2px;
+border-style: solid;
+border-color: red;
+```
+
+- The dimensions of all the properties contributes to the total amount of space an element occupies. Below we have a box with width of 400 px and when we add 30px of padding right&left, 20px of border right&left so the total width of the element will be 400 + (30 + 30) + (20 + 20) = 500px, margin won't be contributing to the total size of the element as it adds space around the element, but it does affect the amount of space element takes up.
+
+![](https://i.imgur.com/9fi1o8r.png)
+
+### Debugging the Box Model
+
+- We can experiment by selecting various elements in our css file to see how changing padding and margin affects the elements, or we can make use of developer tools present in browser to inspect the element. Press `Ctrl+Shift+C` and click the element and then you will end up on the properties of that element in html file as well as CSS related to it will be shown, and if you scroll a little further in styles tab you will see box model representation as well where calculated values of border, padding etc. is all shown.
+
+- You can hover over the box model so that border and elements are highlighted.
+
+### Padding, Margin and Border
+
+- [CodePen Link](https://codepen.io/anmoltomer/pen/KKWpOrB?editors=1100)
+
+### Margin and Negative Values
+
+- Block elements stack on top of each other based on their HTML order. When we use negative margin values to move elements outside of the default stacking position. This technique works best when you need to nudge the elements just a little bit. If you are using large values to move an element to a completely different position on html page, then it is better if you reorder the HTML or use another layout technique.
+
+- Margins can be used for layout is to center align block level elements horizontally. A width is defined for the element and the margins left and right values are set to auto. Top and bottom margin can be any value, depending on how much space we want.
+
+- [Codepen Link](https://codepen.io/anmoltomer/pen/ExWKZxj)
+
+- Many html elements have default padding and margin styles. So some people prefer to start with a clean slate by adding a reset stylesheet that removes the spaces and default styles.
+
+- When learning know default styles look like what, so that you can know tackle then when you come across those.
+
+---
+
+## 4. Typography
+
+### Typography for the web
+
+- Typography is the art of arranging type for readability and to engage with the reader. Typeface is a set of fonts, designed with common characteristics, composed of glyphs. While selecting typeface for our project we aim to choose something that's easier to read but also convery appropriate tone for the content. E.g. Times New Roman is often used for legal documents as they are thought to convey a traditional formality. Comic Sans was designed to be a casual font.
+
+- There are 5 categories of typespaces. Script, Decorative and Monospace typefaces have more specific usages and Serif, Sans-Serif are typefaces which you will probably use the most often. Script typefaces have a hand-lettered look and are often difficult to read at small font-sizes. Script fonts convey an elegant feel and are often used for wedding invitations or greeting cards. For the web it is usually reserved for headlines or small decorative text details.
+
+- Decorative typefaces are ornamental, since decorative fonts tend to have big personalities, they too are usually reserved for headings and declarative details.
+
+- In Monospaced typefaces each character uses the same amount of horizontal space, each character is the same width. These typefaces are often used to display code.
+
+- Serif typefaces are identified by small declarative line usually at the top or bottom of the letters. Viewed as traditional and formal.
+
+- Sans Serif typefaces do not have decorative lines like serif, and are often thought of as contemporary and modern.
+
+### Changing the font-family
+
+- To set the typeface in CSS, use the `font-family` property. The value is a list containing one or more font options separated by commas. This list is sometimes known as `font stack`. The first value in list is our first choice, and the following options are alternative fonts in order of most preferred to least preferred. If the user doesn't have a particular font-family installed on their computer then it will load the next available font from the font stack.
+
+- Choose fonts that look similar and always include a generic font at last since there's no guarantee that any of the font specified would be available. The generic font family names should match the typefaces declared in the fonts deck. The available values are serif, sans-serif and monospace, which match up to the typefaces within the same category.
+
+- Other two generic typefaces are cursive and fantasy (decorative fonts). Cursive usually matches to script or decorative fonts, and fantasy for unconventional decorative fonts. 2 to 3 fonts are pretty standard, however there is no limit. Have your preferred font followed by generic fonts, having a font stack allows for some fallback alternatives.
+
+- How do we know what fonts are available? This is where concept of `web-safe fonts` come into the picture. There are some fonts which come pre-installed on the majority of the computers and devices such as `Arial` and `Times New Roman`. [CssFontStack](http://cssfontstack.com/) is a handy reference for you to see web-safe fonts and vategorize them by typeface.
+
+- However, not all operating systems have the same fonts installed or the user may have deleted the fonts we want. Well CSS has a couple of ways for us to expand our options, using web fonts with `@font-face` or online web services, which we will be discussing in an upcoming lesson. If font family name has spaces or other characters than hyphen then these needs to be wrapped in single or double quotes. Not required, but recommended to add quotes to the font-family names that contain spaces.
+
+### Font-weight, font-style and Web Fonts with @font-face
+
+- Font families often have different typefaces with varying amount of thickness and these vary from light, regular, semi-bold, bold, extra-bold. Use the font-weight property to define the style. Values can be numbers ranging from 100 to 900. 100 being the lightest or thinnest and 900 being the darkest or thickest fotn-face.
+
+- CSS has normal equal to `font-weight` value 400 and is default for body text. `bold` has font-weight value of 700 and is default for headings and other bolded styles like strong text. There are 2 more keywords bolder and lighter which are relative to the inherited font-weight from a parent element.
+
+- `font-style`: Includes 3 values, italic, oblique and normal. [CodePen Link](https://codepen.io/anmoltomer/pen/LYWNLve)
+
+- Font files can be dowloaded just like any other resource such as images. Web fonts are added with `@font-face` rule. You have to declare in your stylesheet `@font-face` make sure to use the keyword as shown.
+
+```css
+@font-face {
+  font-family: "My Font";
+  src: url(path-to-font.woff) /*relative path*/
+  src: url(http://example.com/fonts/font.woff) /*absolute path*/
+}
+```
+
+- woff and woff2 font formats are supported for most of the modern browsers, ttf fro Safari browsers. [FontSquirrel](https://www.fontsquirrel.com/) is a great site which can create different filetypes of a font.
+
+- Using [@font-face guide](https://css-tricks.com/snippets/css/using-font-face/) from csstricks.
+
+- Another option of using fonts is with an online service such as [adobe fonts](http://fonts.adobe.com/) or [google fonts](https://fonts.google.com/). With web font services we link directly to the css stored on the server.
