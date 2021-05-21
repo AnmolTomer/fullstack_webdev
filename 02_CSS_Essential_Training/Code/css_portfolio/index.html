@@ -34,7 +34,7 @@
 
       <!-- ********************  PROJECTS / PORTFOLIO  ********************* -->
       <section class="projects">
-        <div class="content-wrap">
+        <div class="content-wrap divider">
           <h2>Featured Projects</h2>
           <p>
             View selected projects below. More information can be found on my
@@ -42,12 +42,64 @@
           </p>
 
           <!-- Copy the whole <section> block to add more projects. -->
-          <section>
-            <h3>VimLikeVSCode</h3>
+          <section class="project-item">
+            <!-- Vim Like VSCode -->
             <img src="images/vim_vs.png" alt="VimLikeVSCode Screenshot" />
+            <h3>VimLikeVSCode</h3>
+
             <p>
               Created a neovim guide and vim script file with guide to getting
               started with neovim quickly.
+            </p>
+            <a
+              class="btn"
+              href="https://github.com/AnmolTomer/vim"
+              target="_blank"
+              >View Project</a
+            >
+          </section>
+          <!-- Binance Trading Bot -->
+
+          <section class="project-item">
+            <img src="images/binance.png" alt="Binance Screenshot" />
+            <h3>Binance API Bot</h3>
+            <p>
+              Created a flask based webapp to place orders on binance
+              cryptocurrency exchange. Used backtrader, web socket streams, js,
+              python, TA-Lib to simulate a CLI bot as well.
+            </p>
+            <a
+              class="btn"
+              href="https://github.com/AnmolTomer/binance_api_bot"
+              target="_blank"
+              >View Project</a
+            >
+          </section>
+          <!-- iPark -->
+          <section class="project-item">
+            <img src="images/park.jpg" alt="VimLikeVSCode Screenshot" />
+            <h3>iPark</h3>
+
+            <p>
+              Computer Vision Based Parking System. Created using python,
+              tensorflow and django.
+            </p>
+            <a
+              class="btn"
+              href="https://github.com/AnmolTomer/iPark"
+              target="_blank"
+              >View Project</a
+            >
+          </section>
+
+          <!-- ML Bootcamp -->
+          <section class="project-item">
+            <img src="images/ml.png" alt="VimLikeVSCode Screenshot" />
+            <h3>Machine Learning Bootcamp Notes</h3>
+
+            <p>
+              Jupyter Notebooks for the Course Python for Data Science and
+              Machine Learning Bootcamp by Jose Portilla on Udemy.
             </p>
             <a
               class="btn"
@@ -62,7 +114,7 @@
 
       <!-- ***********************  WORK EXPERIENCE  *********************** -->
       <section class="work-experience">
-        <div class="content-wrap">
+        <div class="content-wrap item-details divider">
           <h2>Work Experience</h2>
           <p>
             See my complete work history on
@@ -72,7 +124,7 @@
             As a developer I have been part of multiple data science, web
             development, computer vision teams at various organizations. Work
             comprised primarily around technologies such as Python, MongoDB,
-            JavaScript, TensorFlow, OpenCV.
+            JavaScript, TensorFlow, OpenCV, Flask.
           </p>
 
           <!-- Copy this whole <section> block to add more jobs. -->
@@ -90,78 +142,76 @@
           </ul>
         </section> -->
 
-          <section>
-            <h3>Data Science Intern</h3>
-            <p>Nokia Networks and Solutions</p>
-            <p>May 2019 - June 2019</p>
-            <p>
-              Intern at Nokia Solutions and Networks in Machine Learning and
-              Data Analytics Team.
-            </p>
-            <!-- <p>Optional list:</p>
+          <section class="job-item">
+            <div class="job-details">
+              <h3>Data Science Intern</h3>
+              <p>Nokia Networks and Solutions</p>
+              <p>May 2019 - June 2019</p>
+            </div>
+            <div class="job-summary">
+              <p>
+                Intern at Nokia Solutions and Networks in Machine Learning and
+                Data Analytics Team.
+              </p>
+            </div>
+          </section>
+
+          <!-- <p>Optional list:</p>
           <ul>
             <li>Delete this list if you don't need it.</li>
             <li>Created...</li>
             <li>Lead...</li>
             <li>Responsible for...</li>
           </ul> -->
+
+          <section class="job-item">
+            <div class="job-details">
+              <h3>Computer Vision Developer</h3>
+              <p>Technocrats Robotics</p>
+              <p>Aug 2019 - Feb 2020</p>
+            </div>
+            <div class="job-summary">
+              <p>
+                Worked on custom object detection for Mars Rover Prototype for
+                Indian Rover Challenge 2020 competition.
+              </p>
+            </div>
           </section>
 
-          <section>
-            <h3>Computer Vision Developer</h3>
-            <p>Technocrats Robotics</p>
-            <p>Aug 2019 - Feb 2020</p>
-            <p>
-              Worked on custom object detection for Mars Rover Prototype for
-              Indian Rover Challenge 2020 competition.
-            </p>
-            <!-- <p>Optional list:</p>
-          <ul>
-            <li>Delete this list if you don't need it.</li>
-            <li>Created...</li>
-            <li>Lead...</li>
-            <li>Responsible for...</li>
-          </ul> -->
+          <section class="job-item">
+            <div class="job-details">
+              <h3>Core Committee Member & Educator</h3>
+              <p>VIThink</p>
+              <p>Aug 2019 - March 2021</p>
+            </div>
+
+            <div class="job-summary">
+              <p>
+                Was part of VIThink a student run research and development
+                group. Responsibilities included organizing free workshops,
+                events featuring industry speakers in the domain of data science
+                and AI and guiding students to get started with data science and
+                research.
+              </p>
+            </div>
           </section>
 
-          <section>
-            <h3>Core Committee Member & Educator</h3>
-            <p>VIThink</p>
-            <p>Aug 2019 - March 2021</p>
-            <p>
-              Was part of VIThink a student run research and development group.
-              Responsibilities included organizing free workshops, events
-              featuring industry speakers in the domain of data science and AI
-              and guiding students to get started with data science and
-              research.
-            </p>
-            <!-- <p>Optional list:</p>
-            <ul>
-              <li>Delete this list if you don't need it.</li>
-              <li>Created...</li>
-              <li>Lead...</li>
-              <li>Responsible for...</li>
-            </ul> -->
-          </section>
-
-          <section>
-            <h3>Competitive Programming Lead</h3>
-            <p>Google Developer Student Club</p>
-            <p>September 2020 - April 2021</p>
-            <p>
-              Was competitive programming lead and core committee member.
-              Responsibilities included, Promoting Competitive Programming and
-              Data Science among students, Conducting workshops and events that
-              focus on data structures and algorithmic problem solving, as well
-              as creating various resources for learners of various levels.
-            </p>
-            <!-- <p>Optional list:</p>
-              <ul>
-                <li>Delete this list if you don't need it.</li>
-                <li>Created...</li>
-                <li>Lead...</li>
-                <li>Responsible for...</li>
-              </ul> -->
+          <section class="job-item">
+            <div class="job-details">
+              <h3>Competitive Programming Lead</h3>
+              <p>Google Developer Student Club</p>
+              <p>September 2020 - April 2021</p>
+            </div>
+            <div class="job-summary">
+              <p>
+                Was competitive programming lead and core committee member.
+                Responsibilities included, Promoting Competitive Programming and
+                Data Science among students, Conducting workshops and events
+                that focus on data structures and algorithmic problem solving,
+                as well as creating various resources for learners of various
+                levels.
+              </p>
+            </div>
           </section>
 
           <!-- End of Job block. -->
@@ -170,7 +220,7 @@
 
       <!-- ******************  EDUCATION & CERTIFICATIONS ****************** -->
       <section class="education">
-        <div class="content-wrap">
+        <div class="content-wrap item-details">
           <h2>Education 🎓🏫</h2>
 
           <!-- Copy this whole <section> block to add more schools. -->
@@ -178,6 +228,18 @@
             <h3>Vellore Institute of Technology - Chennai</h3>
             <p>B.Tech, Electronics and Computer Science Engineering</p>
             <p>July 2018 - May 2022</p>
+          </section>
+
+          <section>
+            <h3>Lorem Ipsum Gypsum Institutum</h3>
+            <p>ABC, XYZ Department</p>
+            <p>Starting Date MM-YYYY - Ending Date MM-YYYY</p>
+          </section>
+
+          <section>
+            <h3>Lorem Ipsum Gypsum Institutum</h3>
+            <p>ABC, XYZ Department</p>
+            <p>Starting Date MM-YYYY - Ending Date MM-YYYY</p>
           </section>
         </div>
         <!-- End of School block. -->
@@ -189,7 +251,7 @@
           <h2>Let's Keep in Touch! 👋🏻</h2>
 
           <!-- Social media and contact links. Add or remove any networks. -->
-          <ul>
+          <ul class="contact-list">
             <!-- Email -->
             <li>
               <a href="mailto:anmol3540@gmail.com">Email</a>
@@ -229,3 +291,4 @@
     </main>
   </body>
 </html>
+<!-- Image Credits: Unspalash.com -->

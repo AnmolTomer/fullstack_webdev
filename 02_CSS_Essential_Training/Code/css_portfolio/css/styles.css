@@ -13,6 +13,17 @@ https://coolors.co/f7fff7-343434-2f3061-ffe66d-a1c6d7
 
 /* Global Styles
 ----------------------------------------*/
+/* addes as base css */
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 body {
     color: #343434;
     margin: 0;
@@ -54,8 +65,39 @@ h2 {
     margin: 0;
 }
 
+/* Adjacent sibling combinator to select first para only that is  after h3 */
+
+h3 {
+    /* Remove space */
+    margin-bottom: 0;
+}
+
+.item-details h3+p {
+    font-style: italic;
+}
+
+/* Remove padding form both paragraphs using general sibling combinator */
+
+.item-details h3~p {
+    /* Remove all the space */
+    margin: 0
+}
+
+/* .divider > section to make sure only section child elements within divider will be selected */
+
+.divider>section {
+    border-bottom: 1px dashed #343434;
+    padding: 25px 0;
+}
+
+.divider>section:last-of-type {
+    border-bottom: none;
+}
+
+/* content-wrap controls the style for our page containing blocks and is currently set to a fixed width of 800 pixels */
 .content-wrap {
-    width: 800px;
+    max-width: 800px;
+    width: 85%;
     margin: 0 auto;
     padding: 60px 0;
 }
@@ -67,6 +109,7 @@ h2 {
 header {
     background: #2F3061;
     color: #F7FFF7;
+
 }
 
 /* Projects
@@ -103,19 +146,98 @@ header {
     background: rgba(47, 48, 97, 80%);
 }
 
+.project-item {
+    overflow: hidden;
+}
+
+
+
+.project-item h3 {
+    /* To align the title of project with image */
+    margin-top: 0;
+}
+
 /* Work Experience
 ----------------------------------------*/
 .work-experience {
     background: #A1C6D7;
 }
 
+
 /* Education
 ----------------------------------------*/
+.education {
+    background-image: url(../images/joanna-kosinska-unsplash.jpg);
+    background-size: cover;
+    background-position: top right;
+    padding-bottom: 100px;
+}
 
+.education p {
+    width: 60%;
+}
 
 /* Contact Info
 ----------------------------------------*/
 footer {
     background: #343434;
     color: #F7FFF7;
+}
+
+.contact-list {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+.contact-list a {
+    padding: 15px;
+    /*More clickable region on mobile devices*/
+    display: inline-block;
+}
+
+/* Media Queries ----------------------------------------*/
+
+@media screen and (min-width:750px) {
+
+    header,
+    footer {
+        text-align: center;
+
+    }
+
+    .project-item img {
+        float: left;
+        margin-right: 20px;
+    }
+
+
+    .job-item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 20px;
+    }
+
+    .contact-list {
+        display: flex;
+        /* Justify the content */
+        justify-content: center;
+        /* Padding over margin for better accessibility */
+    }
+}
+
+@media screen and (max-width:749px) {
+    h1 {
+        font-size: 75px;
+        line-height: 0.9;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        line-height: 1;
+    }
+
+    .contact-list a {
+        padding: 5px
+    }
 }

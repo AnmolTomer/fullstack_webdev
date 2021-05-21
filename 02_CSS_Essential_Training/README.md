@@ -707,3 +707,293 @@ text-decoration-style: solid;
 - `line-height` used to set space between the lines of the content. `line-height` can be used with pixels, unitless numeric values, or percentages.
 
 - [CodePen Link](https://codepen.io/anmoltomer/pen/vYxGrqx)
+
+---
+
+## 5. Layouts: Float and Position
+
+### Introduction to Float
+
+- Before flexbox and grid layout modules were introduced, the float property was used for creating entire document layouts e.g. adding sidebar to the main content area, or creating multiple columns. We may still come across sites on legacy code where we have to support layouts with floats. Also floats area used for simple layouts, such as floating an image to have the text flow around it. That's why we will be looking at how floats work briefly here.
+
+- Early websites were essentially a recreation of print designs. The float property allowed us to create magazine-style layouts with floated images and text flowing aroung those images. When developers realize, other elements could be floated too, this paved the way for float-based page layouts. The majority of structural HTML elements used to create page layouts are block-level elements. So by default, they are displayed at full width and are stacked on top of each other.
+
+- The float property can be used to change the normal document flow by floating elements to the left or right side of their container. When elements are floated they are removed from the normal flow, though they remain part of the flow resulting in the change of the positioning of the surrounding elements. [CodePen Link](https://codepen.io/anmoltomer/pen/zYZqMNv?editors=1100)
+
+- [CanIUse](https://caniuse.com/) is a great place to check browser compatitbility of different styling options. Try [this](https://codepen.io/anmoltomer/pen/qBrZLbx?editors=1100) codepen for seeing the clearfix, overflow hack and flow-root method.
+
+### Layouts and the box model
+
+- Earlier we saw how box model uses width, padding and border to interpret the size and space an element takes up. When creating layouts with multiple columns in the same container understanding the way elements are sized is very important. Let's say we want to create a sidebar with a main content area. To do so we need to make sure that whatever size we choose, the columns fit within the container.
+
+- These days due to flexbox grid becoming popular, floats have declined in popularity. [CodePen Link](https://codepen.io/anmoltomer/pen/zYZqyNE?editors=1100)
+
+- Position property can also be used to change the flow of the document. There are 5 different values, each responsible for different type of positioning as follows:
+
+  1. `Static`: Elements are not positioned.
+  2. `Relative`: Relative to current position.
+  3. `Absolute`: Relative to containing element.
+  4. `Fixed`: Relative to the viewport.
+  5. `Sticky`: Relative to containing element and viewport.
+
+- [CodePen Example](https://codepen.io/christinatruong/pen/zXLemj?editors=1100)
+
+### Position and z-index
+
+- We have seen how elements can be positioned along x and y axes, but there is also a third axis. Everytime an HTML element is added within the same container the elements are stacked in layers on the Z axis. This is known as stacking context. An element with higher stack level is rendered in front of the element with lower stack level. Most of the time it is hard to see how elements are stacked on the z index unless they overlap each other.
+
+- [CodePen Link](https://codepen.io/anmoltomer/pen/jOBqdvK?editors=1100)
+
+- To override the default stacking order we can use z-index property to change it, but it only works if element has some kind of position applied to it. Higher the z-index value, higher is the stacking level, so we can control the stack value among various elements by using a bigger or smaller number. If we want to make one of the elements higher in the stack, we just have to use the higher z-index value.
+
+---
+
+## 6. Layouts: Flexbox and Grid
+
+### Introduction to Grid and Flexbox
+
+- Both flexbox and grid are new layout modules that can be used to create layouts that are more advanced than preivously used techniques. While some of the syntax and properties are same for grid and flexbox, each of them have their own specialities.
+
+- `Flexbox & Grid`: Elements are aligned on the single axis, described as being `one dimensional`. We can set the main axis to arrange items as rows or columns, `flexbox only deals with one dimension at a time`. `Grid layouts` are thought of as `two-dimensional` as it can arrange items into rows and columns at the same time. Flexbox is distribution of items across a single axis, whereas `grid is ideal for layouts that require more control with rows and columns`.
+
+- Grid and flexbox introduced many new and flexible solutions for many different use cases, which means new terminology, properties and rules. These are whole new layout modules, not just a couple of properties.
+
+- Float and sometimes displaying position were used to create various page layouts. While there are still uses for these properties, the flexible box has introduced more ways for aligning and sizing elements and creating more flexible layouts as a whole. `Flex container` refers to the parent element, and the `flex items` are the direct child elements of the `flex-container`.
+
+- Flex items are laid out along the main axis, the `direction is horizontal` by default meaning flex elements are `arranged in rows` by default. However, we can change the direction of main axis to make it run vertically using `flex-direction` property. `Cross axis` will always run perpendicular to the direction of the flex items. Both axes have start and main end end for the main axis and cross start and cross end for the cross axis. To use flexbox the flex-container must be defined. Earlier we used the display property to change the behavior of inline and block level elements flex or inline-flex.
+
+![](https://i.imgur.com/yuMilLX.png)
+
+- When `display:flex` is added to the parent element, each child element is now a flex item. Flex items will automatically be displayed in a row and will be the same size as their content, but the flex-container will still span the width of its container.
+
+![](https://i.imgur.com/bdi9YW6.png)
+
+- If you set the display value to the `inline-flex`, the flex container will span the width of its content the flex items and displays inline to other flex-containers. `inline-flex` doesn't change how flex-items are displayed, rather it makes the flex-container display inline. Though the flex items resize themselves automatically to the size of their content, we can set a specific size as well. With flexbox `height` of each flex item `automatically adjusts to be the same height.` without adding any additional CSS.
+
+![](https://i.imgur.com/UH5JuYZ.png)
+
+### Flexbox: Orientation and Ordering
+
+- Just by adding flex display value we already have a basic layout with `height of each flex item automatically adjusted to the same height`. The `flex-direction` property determines the direction of main axis using one of the four values: `row, row-reverse, column and column-reverse`. Row is the default value, the main start and main end `depends on the writing mode of the document`. E.g. if we are working on a left to right language such as english then the `main start and main end` will run from `left to right`.
+
+- Column changes the main axis to a vertical direction. The flex items are stacked from top to bottom and will expand the width of its container. Both directions can also be flipped, `column-reverse` changes the order and alignment of the vertical items, and row-reverse changes the horizontal items.
+
+![](https://i.imgur.com/e0ItNue.png)
+
+- By default, flexbox only aligns items on a single axis. If there aren't enough flex items to fit within the whole container there will be some space left. If the total width of the items are larger than the container the items will automatically shrink to fit into one line. `flex-wrap: nowrap` is the default value i.e. flex items will not wrap. There are other additional flex properties that can be used to determine how items expand and shrink.
+
+- Flex wrap can also be set to a value of wrap to layout the items over multiple rows instead of shrinking to fit into one line, by doing `flex-wrap: wrap`, the items that do not fit will wrap to the next line.
+
+![](https://i.imgur.com/GQYXXE6.png)
+
+- We can also change the direction using `wrap-reverse` value. Only cross start and cross end are reversed. The items still remain in the same order on the main axis.
+
+![](https://i.imgur.com/rYZE9zj.png)
+
+- `flex-wrap` and `flex-direction` can also be applied using the shorthand property `flex-flow`.
+
+```css
+/* Shorthand */
+flex-flow: column wrap;
+/* Longhand */
+flex-direction: column;
+flex-wrap: wrap;
+```
+
+### Flex Sizing
+
+- 3 properties used to set the sizing of the flex-items:
+
+  1. `flex-basis`: sets the initial size of the flex-items.
+  2. `flex-grow`: Determines how items will expand if there is extra space in container
+  3. `flex-shrink`: Determines how items will shrink if there isn't extra space in container
+
+- W3C recommends using the shorthand property `flex: grow shrink basis` to avoid resetting any values that have not been specifically defined. Grow and shrink are defined by a unit-less numeric value whereas basis maybe used with % or key words.
+
+![](https://i.imgur.com/I3rpTSg.png)
+
+![](https://i.imgur.com/YiAFuMb.png)
+
+![](https://i.imgur.com/RkdOJXN.png)
+
+![](https://i.imgur.com/2WMZDJK.png)
+
+- MDN Docs on [Flex](https://developer.mozilla.org/en-US/docs/Web/CSS/flex)
+
+### Flexbox exercise
+
+- [CodePen Link](https://codepen.io/anmoltomer/pen/zYZZYxW?editors=1100)
+
+- Flexbox alignment for justifying the content on main axis using `justify-content` whereas we use `align-items` to align items on the cross axis. To center align the item vertically and horizontally set the values for both properties to center. With justify content and align-items, we can do more than just center align-items. Both of these properties can also be used to distribute space between and around items.
+
+- MDN Docs for [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+### Introduction to CSS Grid, Implicit, Explicit grid
+
+- CSS based grid is new, but using grid based layout has been a common part of web design for a long time. Grids are broken down into evenly spaced columns and rows that are used as a guide for laying out page components. Gutters are often included to have consistent spacing between columns. Page components are arranged within the colunms.
+
+- CSS Grid is a layout method that includes new CSS properties and rules to make it possible to create grid-based designs that previously required hacks and other workarounds. Some grid terminology that you should be aware of: Similar to flexbox, the grid container is the parent element. The direct child elements are the grid items. Grid can be used with two values: `grid` or `inline-grid` to designate the child elements as grid items which will display in a single column. When using the value of grid, unless specified, the items will span the width of its container. When using the value of inline-grid the items will span the width of its content.
+
+- When using the value of grid the container will be displayed as block-level element and stacked on top of other block level elements. For inline-grid the whole container will display inline, next to other inline containers.
+
+- Grid lines are horizontal and vertical lines that divide the grid into columns and rows grid lines are also used to determine the postion of grid items and are referred to by a numerical index, or by custom name. Both vertical and horizontal lines start at 1, when using a numerical index. Grid lines can also be referred to as by a negative numerical index, which allows us to reference the opposite end of the grid. Grid cell is a single unit defined by where the grid row and grid olumn intersect. This space between two adjacent grid lines is the grid track, this is basically columns and rows.
+
+- Grid tracks can optionally be separated by a gutter. When using grid layout, the ability to define the columns and rows collectively known as grid tracks into flexible and adaptive ways can be achieved by using explicit and implicit grids.
+
+- To define specific number of grid lines and grid tracks use `grid-template-columns` and `grid-template-rows`. This will create an explicit grid. We declare these properties in grid container with the values expressed as a track list.
+
+- `fr`: New flexible unit, represents a `fraction` of available space in the grid container.
+
+![](https://i.imgur.com/CoUrllk.png)
+
+- MDN Docs for [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)
+
+- [CodePen Demo](https://codepen.io/anmoltomer/pen/KKWWKLR?editors=1100)
+
+- Read more on Implicit Grid, Explicit Grid, Grid Placement Properties, Grid Columns and Firefox Grid Inspector.
+
+---
+
+## 7. Advanced Selectors
+
+### Intro to Advanced Selectors
+
+- We have seen quite a lot of selectors so far and we will be looking at some advanced ones here. Descendant Selectors creates a matching patterns based on the relationship between nested elements.
+
+- `Child Combinator:` Descendant selectors are used to match to any nested element. Child combinators only match to the direct child element, denoted by symbol `>`, the selector on the right must be the direct child of the element on left. Spaces aren't required before or after the `>` symbol.
+
+```css
+/* Descendant Selector */
+parent child {
+}
+ancestor descendant {
+}
+
+/* child combinator */
+parent > child {
+}
+```
+
+- `Sibling Combinators: Adjacent (+)`: Combinators can be used to match to sibling elements, the elements that share the same parent. The adjacent sibling combinator uses the plus symbol, it matches only the next selector on the right, with the selector on the left.
+
+![](https://i.imgur.com/dFCuv5v.png)
+
+- `Sibling Combinators: General (~)`: To match to any sibling element after the selector on the left we use the `~` symbol and this is called general sibling combinator.
+
+![](https://i.imgur.com/wVTMjat.png)
+
+- [CodePen Demo](https://codepen.io/anmoltomer/pen/yLMMNMY?editors=1100)
+
+### Psuedo-Class Selectors
+
+- We can use psuedo-class selectors to style specific link states such as hover. There are also psuedo classes for selecting a specific child element based on its order. First child and last child can be used to apply a style to the first or the last child element. The parent element doesn't have to be specified unless you want to apply these styles within a specific container.
+
+![](https://i.imgur.com/YnxKlCt.png)
+
+![](https://i.imgur.com/RnX4TSW.png)
+
+- `first-of-type` and `last-of-type` psuedo-selectors are similar but with one distinction. These selectors will match to the first or last-child element of its type, and will disregard child elements that do not match its type.
+
+- [CodePen Demo](https://codepen.io/anmoltomer/pen/poeejer?editors=1100)
+
+---
+
+## Fluid and Responsive Layout
+
+### Introduction to Responsive Design
+
+- After the release of Opera Mobile Browser in 2005 and then iPhone in 2007 more and more users started to use their mobile devices as primary way to access the web, and that has only gone up with introduction of faster mobile phones, better screens and high data speeds.
+
+- In 2010, Ethan Marcotte coined the term, Responsive Web Design, where he said: "Rather than tailoring disconnected designs to each and ever increasing number of web devices, we can treat them as facets of the same experience. We can design for optimal viewing experience, but embed standards based technologies into our designs to make them not only more flexible, but more adaptive to the media that renders them.". In short we need to practice responsive web design.
+
+- The Responsive Design was once considered an extra feature has now become a standard for the majority of today's websites, and even mobile-first development is something that's been getting even more attention.
+
+- Responsive Web Design is not a CSS layout module, rather it is the thought process behind using CSS to tailor your website for optimal viewer experiences on any device.
+
+### Responsive Web Design Key Ingredients
+
+- There are 3 key ingredients in a responsive web design:
+
+1. A fluid layout
+2. Flexible Images
+3. Media Queries
+
+- Original Article to understand the origins of responsive web design and thinking behind it. [Link](https://alistapart.com/article/responsive-web-design/)
+
+- We can use fluid layout techniques. Instead of fixed-width pixels, we will update our project to percentage-based values and use min and max width properties to create a flexible foundation in design of our website.
+
+- Fluid layouts may not solve everything, starting with flexible CSS wil set the foundation for optimizing the layouts for different screen sizes, rather than relying on media queries.
+
+### Images
+
+- Either you can add images in html if it is part of the content, if images are presentational then that should be added with css.
+
+```html
+<img src="image/project-courses.jpg" alt="course image" />
+```
+
+```css
+section {
+  background-image: url(path/to/image);
+}
+```
+
+- [CodePen Demo](https://codepen.io/anmoltomer/pen/OJppyrW?editors=1100)
+
+### Introduction to Media Queries
+
+- Though the foundation of responsive web design is based on creating a fluid layout, what makes a design go from fluid to responsive is usage of media queries. Media Queries makes it possible to modify the CSS depending on specific conditions, defined with a media type and a media feature. Media queries are added to the CSS file using the `@media` rule.
+
+```css
+/* Query that checks if browser viewport is smaller than 1000px, then specific CSS is applied else CSS is ignored */
+@media screen and (max-width: 1000px) {
+  h1 {
+    font-size: 16px;
+  }
+}
+```
+
+- Media Types is broad category of devices that displays the web documents. There are currently four types:
+
+1. `all`: Matches to all devices.
+2. `print`: Matches to printers and print-related displays, conditions when user wants to print by removing background to save ink and so on.
+3. `speech`: Matches to screen reading devices that read out a page, promoting better accessibility.
+4. `screen`: Matches all devices that aren't categorized as print or speech.
+
+- We can combine multiple media features using and to write complex media queries.
+
+```css
+@media (orientation: landscape) {
+  ...;
+}
+
+@media screen and (orientation: landscape) {
+  ...;
+}
+
+@media screen and (min-width: 30em) and (orientation: landscape) {
+  ...;
+}
+```
+
+- [MDN Docs on Media Queries](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Media_queries)
+
+- It is convention to add all the media queries either at the bottom of the CSS file or add the media query beneath the related CSS-style. This second method of writing media queries is more common when writing CSS with preprocessors such as Sass or Less.
+
+- We can also write all our media queries in a separate stylesheet and then import them into the main CSS file. Instead of using `@media` this method will use `@import` rule to load the stylesheet into the main CSS file. Another method is to load the stylesheet into the html file using link tag.
+
+![](https://i.imgur.com/tH6G7oK.png)
+
+- Most commonly used media feature is width. When using media queries we need to specify a width before making a change to the layout. `Breakpoints` refer to the points where you choose to make adjustments to the design and layout, because it starts to break. Certain items may not fit or content becomes really squished. This means layout isn't optimized for current viewport size.
+
+- 2 to 4 breakpoints are generally used to target each kind of device. Mobile, Laptops, Desktops and Tablets. In early days of responsive design, targetting the width of common devices was recommended, but with more and more number of mobile devices coming in these days it is really hard to even assume what is a common size anymore.
+
+- We use a range of viewport value using max/min-width and this is better than exact width viewport size as it gives more flexible region. More on viewport at MDN [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag)
+
+- Desktop First and Mobile First approaches:
+
+![](https://i.imgur.com/bTHNAOE.png)
+
+![](https://i.imgur.com/zX9t33A.png)
+
+![](https://i.imgur.com/EeMPYGw.png)
