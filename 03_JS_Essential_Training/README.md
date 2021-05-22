@@ -2,6 +2,10 @@
 
 ## 0. Preface
 
+- Modern web run on JS, and so do the modern servers and development environments. Knowing foundational elements of JS will set you on a path where you will be well equipped to build the web of tomorrow, be it Vanilla JS or through a modern JS framework like React or Vue, in the JAMstack or a node based server environment or in JS powered applications and environments which we haven't developed.
+
+- HTML is the structure of your webpage, CSS is the language of style and presentation, then in that sense JavaScript is the language of web applications that brings all of this together. In this course we will understand get an introduction to modern JS and how to make sense of it. JS is the primary language for everything we do on the web.
+
 - JavaScript is a scripting language of the web. As the web evolves from a static to a dynamic environment, technology focus is shifting from static markup and styling—frequently handled by content management systems or automated scripts to dynamic interfaces and advanced interaction. Once seen as optional, JavaScript is now becoming an integral part of the web, infusing every layer with its script.
 
 - Through practical examples and mini-projects, this course helps you build your understanding of JavaScript piece by piece, from core principles like variables, data types, conditionals, and functions through advanced topics including loops, and DOM scripting.
@@ -18,3 +22,17 @@
    - [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 2. From the root folder, open the terminal and enter the command `nmp install` to install dependencies.
+
+---
+## Contents
+
+1. JavaScript A Brief Introduction
+2. Up and Running with JS
+3. Objects
+4. Sidebar: String Output
+5. DOM
+6. Sidebar: Variables and Data Types
+7. Arrays
+8. Functions and Methods
+9. Events
+10. Troubleshooting and Validating JS
