@@ -26,7 +26,7 @@
 ---
 ## Contents
 
-1. JavaScript A Brief Introduction
+1. [JavaScript A Brief Introduction](01_JS_A_Brief_Introduction)
 2. Up and Running with JS
 3. Objects
 4. Sidebar: String Output
