@@ -19,3 +19,19 @@
 - In console `document.body.innerHTML` will return us all the html that is present inside body and we can also change it by doing `document.body.innerHTML = "some text"` this will wipe off whatever is on the webpage and replace it with `some text` on webpage. We want to create a template where we fill the list items with data from our JS object.
 
 - We remove all the HTML in between `<main>` tag. We go to [script.js](04_01/script.js) and here we will define how to define a template literal.
+
+---
+
+## 04_02 Traditional String Output
+
+- Template Literals are great for outputting HTML and other content mixed with JS. However, some of the code and tutorials do not use template literals and you would find standard strings being used. This is the classic way of outputting string content using plain old strings. It's a bit more convoluted but it is and will be used. So it's worth knowing about.
+
+- We will use string concatenation in classic way to add some value and then send it.
+
+```js
+const content = "<h1>" + object.propertyName + "</h1>";
+
+document.body.innerHTML = content;
+```
+
+- The traditional string concatenation is not used but it's better to know something like this exists, in your own projects try to use template literals whenever possible.
