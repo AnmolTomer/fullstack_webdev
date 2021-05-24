@@ -27,10 +27,10 @@
 ## Contents
 
 1. [JavaScript A Brief Introduction](01_JS_A_Brief_Introduction)
-2. Up and Running with JS
-3. Objects
-4. Sidebar: String Output
-5. DOM
+2. [Up and Running with JS](https://github.com/AnmolTomer/fullstack_webdev/tree/master/03_JS_Essential_Training/02_Up_And_Running_With_JS)
+3. [Objects](https://github.com/AnmolTomer/fullstack_webdev/tree/master/03_JS_Essential_Training/03_Objects)
+4. [Sidebar: String Output](https://github.com/AnmolTomer/fullstack_webdev/tree/master/03_JS_Essential_Training/04_Sidebar_String_Output)
+5. [DOM](https://github.com/AnmolTomer/fullstack_webdev/tree/master/03_JS_Essential_Training/05_DOM)
 6. Sidebar: Variables and Data Types
 7. Arrays
 8. Functions and Methods
