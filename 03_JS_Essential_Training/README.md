@@ -24,6 +24,7 @@
 2. From the root folder, open the terminal and enter the command `nmp install` to install dependencies.
 
 ---
+
 ## Contents
 
 1. [JavaScript A Brief Introduction](01_JS_A_Brief_Introduction)
@@ -31,8 +32,8 @@
 3. [Objects](./03_Objects)
 4. [Sidebar: String Output](./04_Sidebar_String_Output)
 5. [DOM](./05_DOM)
-6. Sidebar: Variables and Data Types
-7. Arrays
-8. Functions and Methods
+6. [Variables and Data Types](./06_Variables_Containers_For_Everything)
+7. [Arrays](./07_Arrays)
+8. [Functions and Methods](./08_Functions_And_Methods)
 9. Events
 10. Troubleshooting and Validating JS
