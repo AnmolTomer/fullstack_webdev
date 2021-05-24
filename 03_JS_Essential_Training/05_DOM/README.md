@@ -185,12 +185,10 @@ document.querySelector(".site-title").style.cssText =
 ## Wrap Up
 
 1. What method(s) would you use to check if an element has a specific ID and if so replace it with a different ID?
-
-   > the element.hasAttribute() and element.setAttribute() methods.
+> the element.hasAttribute() and element.setAttribute() methods.
 
 2. What is the difference in the return from the element.className and element.classList properties?
-
-   > element.className returns a string containing all classes appended to the element. element.classList returns a DOMTokenList with each class appended to the element.
+> element.className returns a string containing all classes appended to the element. element.classList returns a DOMTokenList with each class appended to the element.
 
 3. What does the HTML markup of this image element look like after the following script has executed?
 
@@ -205,16 +203,13 @@ newImage.style.cssText = "display: block";
 > `<img class="feat-img" src="logo.svg" alt="The company logo" style="display: block;">`
 
 4. What is the value of `const target` after this code has executed? `const target = document.querySelectorAll("a");`
-
-   > A node list containing each element object matching the query.
+> A node list containing each element object matching the query.
 
 5. What is the value of `const target` after this code has executed (assuming there are elements in the DOM with the class "note")? `const target = document.getElementsByClassName(".note");`
-
-   > An empty array-like HTMLCollection object. The getElementsByClassName() method receives a string of classnames to be found as its parameter Adding the . in front of the classname invalidates the query and no match is produced.
+> An empty array-like HTMLCollection object. The getElementsByClassName() method receives a string of classnames to be found as its parameter Adding the . in front of the classname invalidates the query and no match is produced.
 
 6. The querySelector() and querySelectorAll() methods use what kind of selectors as their parameter?
-
-   > A CSS selector string.
+> A CSS selector string.
 
 7. What happens if you run this code:
 
@@ -222,17 +217,13 @@ newImage.style.cssText = "display: block";
 const target = document.querySelector(".first-paragraph");
 target.style.font-family = "sans-serif";
 ```
-
 > "Uncaught SyntaxError: Invalid left-hand side in assignment" JavaScript does not allow for hyphens in property names. When targeting CSS properties, use camelCase, so the "font-family" property becomes "fontFamily".
 
 8. What does the `element.classList.toggle()` method do?
-
-   > Adds the specified class if it is not appended to the element, removes the specified class if it is appended to the element.
+> Adds the specified class if it is not appended to the element, removes the specified class if it is appended to the element.
 
 9. Where in the HTML document does the new element appear when you use the `document.createElement()` method?
-
-   > Nowhere: The element is created, but has not been added to the DOM.
+> Nowhere: The element is created, but has not been added to the DOM.
 
 10. What is the "DOM"?
-
 > DOM is short for "Document Object Model", the document object the browser creates when it renders an HTML document.

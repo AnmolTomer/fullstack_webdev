@@ -10,7 +10,7 @@ Course contains 17 modules and helps you to gain skills to work with both front 
 
 1. [HTML Essential Training](./01_HTML_Essential_Training/README.md)
 2. [CSS Essential Training](./02_CSS_Essential_Training) || [Demo 🔗](https://anmoltomer.github.io/fullstack_webdev/02_CSS_Essential_Training/Code/css_portfolio/)
-3. JavaScript Essential Training
+3. [JavaScript Essential Training](./03_JS_Essential_Training)
 4. Learning ECMAScript 6+ (ES6+)
 5. Git Essential Training: The Basics
 6. React.js Essential Training
