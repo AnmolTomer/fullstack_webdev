@@ -183,3 +183,157 @@ a => a + 100;
 - Transform a number into an internationalized format for this we use `Intl.NumberFormat`. We will use this international number formatting object, and it's a constructor for objects that enable language sensitive formatting.
 
 - MDN Reference for [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
+
+---
+
+## 08_09 Practice: Passing values between functions
+
+- Writing markup for images becomes clunky, esepcially if you wrap your images in a figure tag.
+
+- Create 2 functions that are dependent on each other to output some data from a object.
+
+- Create two functions, first function creates a new article element, populate the content from
+  the object properties. Returns the new element.
+
+- Second function is called by first function, its purpose is to create a new figure element, populate it with an image pointing to the image URI defined in the object, add figcaption with image description, return the whole figure.
+
+- Ref: [08_09](./08_09/script.js)
+
+---
+
+## 08_10 Callbacks
+
+- Sometimes we have 2 functions and we want to control the sequence in which they are executed. This typically happens if one function relies on the output of another function for data or when one function has to wait for another function before doing something. One way of handling this type of function sequencing is through what is known as callback function.
+
+- This is a traditional method for handling this type of problem and we will come across this all the time.
+
+- Ref: [08_10](08_10/script.js). Here we have printHTML function receiving finalTip object and we want this function to output a HTML table that appends to main in document. We pass values to `tipCalculator` and only when everything is done we want to call `printHTML` function and then that function will output the content in browser.
+
+- Callbacks are a traditional way of calling a function that waits for another function to run and then it's called. In modern JS we have modern tools such as `promises` that can do something similar, but we will see this callback pattern all the time, where you call in a function or callback a function and get a value.
+
+- This type of callback pattern is also seen in other type of features. E.g. if you are working with setTimeOut function you are infact working with a callback function or if you are working with an event listener, we will do later in the course then also you are working with a callback function.
+
+---
+
+## 08_11 Conditional if...else statement
+
+- Much of programming centers around conditional logic statements. `if else` conditional statement is one of the most used conditional statement in JS. Ref: [08_11](08_11/script.js) for ternary operator on line 44.
+
+---
+
+## 08_12 Logical Operators
+
+- Conditional statements like `if-else` rely on logical operators. We briefly talked about these earlier and now we can see them in action. A conditional statement is looking for a condition to either be met or not met, meaning we can use any expression that returns either true or false as the condition. Below we see an example of using logical operator.
+
+```js
+// if statement
+if (everydayPack.backpackAge() > 30) {
+  console.log("Backpack is used.");
+} else {
+  console.log("Backpack is new.");
+}
+// logical statement - and
+if (bag.volume > 15 && bag.pockets > 8) {
+  console.log("Bag is big");
+} else {
+  console.log("Bag is small");
+}
+
+// logical statement - or
+if (bag.volume > 15 || bag.pockets > 8) {
+  console.log("Bag is big");
+} else {
+  console.log("Bag is small");
+}
+```
+
+---
+
+## 08_13 Conditional Switch Statement
+
+- Let's say we have multiple values that can act as output depending on multiple conditions, we can do this by using nested statements but that could lead to messy code at times and hard to read.
+
+- Instead when we want to get different results based on multiple possible conditions we use switch statement.
+
+- MDN Reference for [Switch Statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)
+
+```js
+const expr = "Papayas";
+switch (expr) {
+  case "Oranges":
+    console.log("Oranges are $0.59 a pound.");
+    break;
+  case "Mangoes":
+  case "Papayas":
+    console.log("Mangoes and papayas are $2.79 a pound.");
+    // expected output: "Mangoes and papayas are $2.79 a pound."
+    break;
+  default:
+    console.log(`Sorry, we are out of ${expr}.`);
+}
+```
+
+- Switches are used for literal matches but also for conditions can be used in following manner:
+
+```js
+const usedStatus = () => {
+  let age = bag.Age();
+  let desc;
+  switch (true) {
+    case age < 30:
+      desc = "new";
+      break;
+    case age >= 30 && age < 365:
+      desc = "Lightly used";
+      break;
+    case age >= 365 && age < 1095:
+      desc = "used";
+      break;
+    case age > 1095:
+      desc = "old";
+      break;
+    default:
+      console.log(`There is no description for ${age}.`);
+  }
+  console.log(`
+  Age: ${age} days
+  Status: ${desc}
+  `);
+};
+
+usedStatus();
+```
+
+---
+
+## 08_14 Looping Through Content
+
+- JavaScript gives us several different statements and methods for repeating a process over and over or looping through arrays and nested objects. Common to all of them is we first specify under what conditions the loop or iteration should run in statement declaration, and then we specify what should happen at each iteration in the body of the statement.
+
+- Ref: [08_14](08_14/script.js)
+
+---
+
+## 08_15 Using the map() array method
+
+- The map method for arrays deserves special mention, as it is heavily used when working with complex lists of data and when using frameworks like React. The map method takes an existing array, then does something to each of the items in the array and returns each of those items into a new array.
+
+- The for each method loops through the array but doesn't create anything unless we tell it to and nothing is ever returned into something else.
+
+- So, if we need to create a new array with the items for an existing array and we want to change those items in the process, we use the map method.
+
+- Ref: [08_15/script.js](08_15/script.js)
+
+- Why would you use `map()` when `forEach()` is available? In many cases simply iterating through an array and outputting the content right away is not what you want to do. More often that not, we need to create a more complex array first and then perform other actions on that array before we output it to the browser or send to database etc. That's what the map method is used for.
+
+- Map method is used a lot in modern JavaScript especially in JavaScript frameworks. And a lot of item, it is just used to iterate through an array just like we did with the `forEach` method. Using map() for iterating is an anti-pattern and should be avoided. Map is specifically for when you need to create a new array to do something further with the data. Don't get high and ride the trend train just because everyone else is using a trendy new addition to JS i.e. map, use methods for what they are made for. Remember more time is spent in reading code than writing. Try to make it readable and less populated with things that might confuse you.
+
+---
+
+## 08_16 Challenge: Build an adavanced function
+
+- Ref: [08_16/script.js](08_16/script.js)
+
+- Take the array object, use `map()` to modify its elements and store in a new array, pass this array to the main and append to the HTML page.
+
+---
