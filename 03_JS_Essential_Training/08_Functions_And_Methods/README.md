@@ -57,4 +57,129 @@ const doMoreMath = function (a, b) {
 
 ## 08_03 A Standard Function
 
-- We create a template literal, add object with currentPack param and then createElement of article and then we use `innerHTML`
+- We create a template literal, add object with currentPack param and then createElement of article and then we use `innerHTML` to populate it with list items followed by selecting the body element using querySelector and appending to it our object using `addPack(objectName)`
+
+```js
+const greenPack = {
+  name: "Frog Pack",
+  color: "green",
+  volume: 8,
+  pocketNum: 3,
+};
+
+// currentPack param going through the entire function
+const addPack = function (currentPack) {
+  const newArticle = document.createElement("article");
+  newArticle.innerHTML = `
+  <h1>${currentPack.name}</h1>
+  <ul>
+    <li>Volume: ${currentPack.volume}</li>
+    <li>Color: ${currentPack.color}</li>
+    <li>Number of Pockets: ${currentPack.pocketNum}</li>
+  </ul>
+  `;
+  return newArticle;
+};
+
+const body = document.querySelector("body");
+body.append(addPack(greenPack));
+```
+
+- Functions can get really complex, really fast but the basic premise remains the same.Function will always have a name, it will always have parameters (nothing counts), there will be curly brackets wrapping around/after the parameters and functions may/may not return the data when called.
+
+- Ref: [08_03](08_03/script.js)
+
+---
+
+## 08_04 The Arrow Function 🏹🏹
+
+- In modern JS it's more and more common to use arrow functions in place of regular function expressions. Arrow functions are a shorter way of writing function expressions, and they also have some special properties, we can take advantage of.
+
+- Ref: [08_04/script.js](08_04/script.js)
+
+- MDN Web Docs Reference [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+- Parentheses with parameter followed by an arrow and {logic}.
+
+```js
+// Traditional function
+
+function (a){
+  return a+100
+}
+
+// 1. Valid Arrow function - remove the word "function" and place arrow between the parameters and opening body bracket
+
+(a) => {
+  return a+100;
+}
+
+// 2. Also a valid arrow function - Remove the body brackets {} and word "return" -- the return is implied
+
+(a) => a + 100;
+
+// 3. Also a valid arrow function - Remove the argument () parentheses
+
+a => a + 100;
+```
+
+- `Why do we have 2 methods of writing functions ?` On the surface, the arrow functions are a simpler way of writing anonymous functions. When we work with events, they produce a lot more cleaner code, you will see this when we work with event.
+
+- There are some subtle differences worth knowing about when it comes to anonymous functions, i.e. function declarations can be hoisted meaning we can call the function before it is declared in the JS. This is improper coding practice but it does work. Arrow functions can only be called after they have been declared and by using arrow functions we are imposing a stricter way of writing our code, one that is more robust.
+
+- `You can't use arrow functions when declaring methods in an object.` Inside an object if you have a method, you have to use proper anonymous function declaration. Arrow function won't work in that context.
+
+---
+
+## 08_05 Arrow functions and "this"
+
+- We have seen that `this` keyword refers to the current object itself and can be used inside object. Also this is used in an object constructor.
+
+- Ref: [08_05](08_05/script.js) here we have a method inside our object called `new volume.` New volume contains a function, we console log out the text this volume in the method, then we use this keyword to refer to the volume property of the current object.
+
+- This keyword works fine inside a regular function in a object. If we call function inside a function then issues start to arise. If we want IIFE inside a function then better to use arrow function to avoid declaration being hoisted to global scope.
+
+- Arrow function returns the local scope value as arrow function doesn't have its own `this`. Arrow function doesn't know what `this` keyword means and refers to closest available scope, which in our case was object and its volume that we changed to 5.
+
+- For the same reason, not knowing what `this` is, we don't use arrow function as declaration for a method, because if we did that, then the arrow function wouldn't know what scope to use, so it would refer back to global scope and nothing would work inside arrow function.
+
+- If you are using this in a method within an object and you then get an odd result, try turning the function into an arrow function to see if that solves the problem, most likely it's the issue with scope.
+
+---
+
+## 08_06 Practice: Build a function
+
+- Ref: [08_06](08_06/script.js)
+
+- Create a basic function declaration.
+- Make a change to an element in the DOM. (querySelector, adding a class) etc.
+- Call the function declaration
+- Create a basic function expression
+
+---
+
+## 08_07 Pass data to a function with parameters
+
+- Functions are great tool for using or transforming data in some way.
+
+- To parse data, we have to pass data to the function, and this is done by passing arguments through function parameters.
+
+- We want to calculate the tip for a given amount. We pass a amount and percentage, and then return the tip and total amount to us.
+
+- Ref: [08_07/script.js](08_07/script.js)
+
+---
+
+## 08_08 Return values from a function
+
+- Our tip calculator in [08_07/script.js](08_07/script.js) executes code and outputs it into the console. In some other cases we want the function to return something where the function was originally called so that we can process that content further.
+
+- If wo look at console output from `08_07` we will see that we are using full stop to represent the decimals in the currency. This is correct for some currencies in some languages but not for all of them. We are also not showing correct currency output.
+
+- We will improve tip calculator in [08_08/script.js](08_08/script.js) to output the correct currency, formatting and symbols for whatever currency we are targeting.
+
+- To do that we create a new helper function to transform these numbers for us.
+
+- Transform a number into an internationalized format for this we use `Intl.NumberFormat`. We will use this international number formatting object, and it's a constructor for objects that enable language sensitive formatting.
+
+- MDN Reference for [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
