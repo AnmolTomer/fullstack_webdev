@@ -35,5 +35,5 @@
 6. [Variables and Data Types](./06_Variables_Containers_For_Everything)
 7. [Arrays](./07_Arrays)
 8. [Functions and Methods](./08_Functions_And_Methods)
-9. Events
+9. [Events](./09_Events)
 10. Troubleshooting and Validating JS
