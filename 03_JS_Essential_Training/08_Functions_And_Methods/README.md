@@ -337,3 +337,5 @@ usedStatus();
 - Take the array object, use `map()` to modify its elements and store in a new array, pass this array to the main and append to the HTML page.
 
 ---
+
+<!-- TODO: Map Array Method, Template Literal Construction -->
