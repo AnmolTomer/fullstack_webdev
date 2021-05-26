@@ -85,3 +85,170 @@
 - We can't use `map` to iterate over sets, `forEach` needs to be used.
 
 - Ref: [02_07/script.js](02_07/script.js)
+
+---
+
+# 03. Arrays and Array Methods
+
+## 03_01 Using the array spread operator
+
+- Spread operator turns the elements of an array into arguments of a function call or into elements of an array literal.
+
+- We create 3 arrays viz cats, dogs and animals. Now if we add cats and dogs as comma separated item in animals array it would lead to two nested arrays in animals arrays. Here is where `spread` operator `...` comes into play. We can put in `...` in front of cats and dogs and this would give us a single array of animals as well as takes all the elements from cats and dogs array and it will spread them into animals array without nesting them.
+
+- Ref: [03_01](03_01/script.js)
+
+## 03_02 Destructuring arrays
+
+- Destructuring assignment gives us an easy way to extract data from arrays and objects and assign them to variables. Let's look at how destructuring works with array.s
+
+- We have an array of cities, and if we want to grab single one of them we could use their index to call them. But a new way to handle this type of access is to handle it with destructuring.
+
+- If we want to access the first and second element and keeping rest of the array same we could do so in the following manner:
+
+```js
+// Old method of creating arrays and accessing them by index
+let cities = ["DC", "LA", "CA", "NY", "FL"];
+console.log(cities[0]); // O/p: DC
+// --------------------------------------
+// Using destructuring
+let [first, second, ...rest] = ["DC", "LA", "CA", "NY", "FL"];
+console.log(first); // O/p: DC
+console.log(second); // O/p: LA
+console.log(rest); // O/p: ["CA", "NY", "FL"]
+// To see the fifth item directly, put commas in the places you don't want a name to assign to
+let [, , , , fifth] = ["DC", "LA", "CA", "NY", "FL"];
+console.log(fifth);
+```
+
+## 03_03 Searching arrays with the .includes function
+
+- `.includes()` could be used to help us search in arrays.
+
+```js
+// Old method of creating arrays and accessing them by index
+let cities = ["DC", "LA", "CA", "NY", "FL"];
+console.log(cities.includes("DC")); // True
+console.log(cities.includes("Tel-Aviv")); // False
+```
+
+---
+
+# 04. ECMAScript Objects
+
+## 04_01 Enhancing Object Literals
+
+- We build a function that is going to return an object. The function takes in a name, sound and returns name and sound.
+
+```js
+function skier(name, sound) {
+  return {
+    name: name,
+    sound: sound,
+    powederYell: function () {
+      let yell = this.sound.toUpperCase();
+      console.log(`${yell}! ${yell}!`);
+    },
+  };
+}
+
+skier("John", "arghh").powederYell();
+```
+
+- The above code is good to print `powderYell()` but a newer object syntax called object literal enhancement can make this even better. `name:name` and `sound:sound` could be replaced with just `name` and `sound` and everything would still work as before.
+
+- This can be used to make code more clean and less repetitive.
+
+- Ref: [04_01](04_01/script.js)
+
+## 04_02 Creating Objects with Spread Operator
+
+- Here we see how to use the spread operator `...` with the objects. We create an object called daytime and we put in keys for breakfast, lunch. Then we create a variable for `nighttime` and another object for `backpackingMeals` which contains daytime and nighttime.
+
+- On doing `console.log(backpackingMeals)` we get nested items from daytime as it contains breakfast and lunch. So we can instead store the daytime using spread operator in `backpackingMeals` and we will get only the items and no nesting. That way all the three meals, 2 in daytime and 1 in nighttime meals all will be at the same level.
+
+- Ref: [04_02/script.js](04_02/script.js)
+
+## 04_03 Destructuring Objects
+
+- A handy feature that we will see used widely in JavaScript applications is destructuring.
+
+- In `script.js` we take a sandwich object which has title, price, description and some ingredients. Now if we wanted to `console.log()` some of the values from the sandwich we could say let's log the whole sandwich first, and we can also do sandwich.title and similarly dot notation for other properties.
+
+- Ref: [04_03/script.js](04_03/script.js)
+
+## 04_04 Iterating with the for/of loop
+
+- `For / of` is a new iteration syntax that we can use to replace `for in` and `forEach`. We can use this to loop over iterable objects, like arrays, strings, maps and sets.
+
+- In script.js we iterate over a string using `for of`, over an array and more.
+
+- Ref: [04_04/script.js](04_04/script.js)
+
+## 04_05 Classes in JS && 04_06 Inheritance in JS Classes
+
+- Classes have been used for a long time in OOP based languages to encourage reusability.
+
+- E.g. if we have a class called chair, it would have some characteristics, and we would create instances (objects) of that chair class in our projects. As of ES6 we have a way to create and use classes with JS. The syntax is easy as well.
+
+- Ref: [04_05/script.js](04_05/script.js)
+
+## 04_07 Getting and setting class values
+
+- In objects and in classes JS has a `get()` and `set()` method. A getter or a get method gets the value of a specific property. If you are wondering what is the property of this object then you can do `objectName.property.get()` to get its value. Similarly to set the value of an object you can do `objectName.property.set() = "value"`
+
+- getters and setters can be used in classes as well as regular objects.
+
+---
+
+5.  ECMAScript Functions
+
+## 05_01 Using the string.repeat() function
+
+- We have looked at array and string methods like startsWith, endsWith and includes(). Here we look at `.repeat()` method. The repeat metho builds and returns a new string which contains a certain number of copies of a particular given string.
+
+- Ref: [05_01/script.js](05_01/script.js)
+
+## 05_02 & 05_03 Setting default function parameters & Arrow functions
+
+- Ref: [05_02/script.js](05_02/script.js)
+
+## 05_04 Understanding this in arrow functions
+
+- We have seen how arrow functions make our code more readable. In addition to this arrow functions helps us to deal with the scope of this in our JS code. Let's take an example of the old way and then we will update this to the new syntax.
+
+- We create a person object, with array of hobbies. Add printHobbies method. When we use the conventional method defined using function keyword we are not able to do `this.property` and at times developers substitute around this by setting `this = _this` to scope this keyword to be able to plugin the properties in string literal.
+
+- A better approach instead of doing this = \_this can be using an arrow function.
+
+- Ref: [05_04/script.js](05_04/script.js)
+
+## 05_05 Generators
+
+- Generators are a new type of function that allow us to pause functions in the middle of execution to be resumed later. You know you are dealing with a generator when you see an asterisk `*` immediately followed by function keyword.
+
+- We can hit pause by using the yield keyword and this can be used numerous times within the same function. We have four yield statements inside the director generator function below in the example. on calling the `.next().value` we get the value and on doing `.next()` we get value and done as boolean true or false, when there are no more yield statements then done will be true.
+
+- Remember `yield` keyword will be used anytime we want to his pause inside the execution of a function.
+
+- Ref: [05_05/script.js](05_05/script.js)
+
+```js
+// director generator function will do a countdown for us.
+function* director() {
+  yield "Three";
+  yield "Two";
+  yield "One";
+  yield "Action";
+}
+let countdown = director();
+console.log(countdown.next().value);
+console.log(countdown.next().value);
+console.log(countdown.next().value);
+console.log(countdown.next());
+console.log(countdown.next());
+```
+
+![](https://i.imgur.com/hQYOYvS.png)
+
+---
