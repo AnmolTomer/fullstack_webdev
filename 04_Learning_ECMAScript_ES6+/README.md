@@ -252,3 +252,41 @@ console.log(countdown.next());
 ![](https://i.imgur.com/hQYOYvS.png)
 
 ---
+
+# 6. Asynchronous JavaScript
+
+<!-- TODO: Circle back later on to entire section. -->
+
+## 06_01 Building Promises
+
+- Promises help us deal with async behaviour in JavaScript. When something is asynchronous it just means that some sort of waiting is going on. There's a delay between when we ask for something, and when we receive it.
+
+- Prime example of this is fetching data. We ask for some data from an external API, we wait for a couple of seconds and then it comes back to us. So to create our first promise, we will create a delay function. So the delay function in script.js takes a certain number of seconds and then it is going to `return a new promise`.
+
+- New promise will take in a callback function, takes resolve as param, resolve means that if everything goes as expected, it will resolve, then we use setTimeout to wait for a certain number of seconds. setTimeout function takes in resolve, which stands in for the callback function to fire after the timeout.
+
+- `delay` function uses the timeout function and then as soon as the timeout is over we log two seconds to console.
+
+- Anything that we pass in to the `.then()` function is resolve, it's the function that's going to be called. But what happens if resolve doesn't go through? Data isn't loaded or some other error? Promises by nature are either pass or fail, no in between.
+
+- Promises help us make async code more manageable and more reusable.
+
+- Ref: [06_01/script.js](06_01/script.js)
+
+## 06_02 Loading Remote Data with Promises
+
+- We often use promises to load data. Here we create a function that returns a promise. Function is called `spacePeople` as this function fetches data from an API that returns names of astronauts who are currently in space.
+
+- What you see in 06_02 is going to be simplified tremendously by using `fetch()` we see that in 06_03.
+
+- Ref: [06_02/script.js](06_02/script.js)
+
+## 06_03 Returning promises with fetch
+
+- We saw in [06_02/script.js](06_02/script.js) to get data from an API, but that looked like a lot of work right. Now we look at fetch, fetch is a function that works natively in browser. There are also packages that work with Node like node-fetch and isomorphic-fetch to do something similar.
+
+- Fetch just takes in the URL of our API and prints it to console.
+
+- Ref: [06_03/script.js](06_03/script.js)
+
+##
