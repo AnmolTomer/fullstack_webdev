@@ -114,3 +114,35 @@ fi
 ```
 
 - `git --help`: Returns helpful information and how to get list of subcommands.
+
+---
+
+# 03. Getting Started
+
+- We use `git init` inside a directory to initialize a project using this command in git.
+
+- Git stores the files that it uses to do its work inside the `.git` directory of a project. .git contains other directories such as branches, hooks, info and other files. These are the files that Git uses to do all of its tracking. We won't be dealing with contents inside .git directory except for maybe the .config file. If you delete .git directory then git would be removed from the project.
+
+- In order to track some changes we have to make some changes in our repository. Once you have added some files that you want to track. We can get git to track a change using `git add .`. This would tell git to add all the changes in the current directory. Git isn't actually tracking the changes yet, in order to make the changes permanent we need to commit those changes which we do by `git commit -m "Your commit message."`
+
+![](https://i.imgur.com/99Lr6TA.png)
+
+- This is the process we will be using when working with git. First make whatever changes you want, then add the changes, then commit the changes to the repository with a message. These 3 steps are going to be repeated over and over again.
+
+- There are some best practices when it comes to writing a good commit message. A short single line summary (less than 50 characters). If you want to add more description have a blank line and a more complete description. Start with a single line summary even if you need to dive into some deeper details. That single one lined summary at the start is important. If you decide to use a longer description, still try to keep each line to less than 72 characters.
+
+- Reasoning behind keeping message length to a minimum is that other users who are coming to this repository maybe using different devices to view it such as email, phone, slack chat room etc.
+
+- Write commit messages in present tense, not past tense. Fix for a bug or Fixes a bug not fixed a bug. Bullet points are usually asterisks or hyphens. Can have tracking numbers from bugs or support requests. Can develop shorthand for your organization. e.g. `[css,js]`, `bugfix:`, `#38405` can be different labels for different cases the commit is for.
+
+- Be clear and descriptive.
+
+- To use the commit log, make sure you are inside git project and then type `git log`. This returns a log of all the commits that have been made to a particular git project, with newest entry at the top. Commit has an unique ID number for every commit used to identify the commit. There's author, time and date of commit. You can type `git help log` to find more on log command.
+
+- If we type `git log -n 5` then it shows us the last n number of commits. `git log --since=2021-05-27` will show commits since 27th May 2021. Similarly we can do `git log --until=2021-05-27` to show all the commits until 27th May 2021. To see the commits by a particular author we can do `git log --author="partOfTheName"`
+
+- One of the most useful one is the ability to search for commit message using grep with git log. Grep is global search for regular expressions. `git log --grep="Bugfix"` or `git log --grep="ghi#14563518"` will search for a certain github issue in log of commits.
+
+- Another good example to pair up multiple flags could be, say you want to output log for the last 2 commits that happened before September 10, 2020 then you could do `git log --until=2020-09-10 -n 2` because the --until option defines the end date for logs to output and -n 2 limits to the two most recent. Or if you want to output the log for all commits by Tony labelled refactor during March 2019 you could do `git log --since=2019-03-01 --until=2019-03-31 --author="Tony" --grep="refactor"`. The --since and --until narrow the date, --author defines the commit's author, and --grep will search for all commits that include "refactor" in the description.
+
+---
