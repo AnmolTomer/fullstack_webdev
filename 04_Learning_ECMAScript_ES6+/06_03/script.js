@@ -19,5 +19,6 @@ let spaceNames = () => getAstronauts()
     .then(names => names.join(", "))
 
 spaceNames().then(console.log)
+//  This is similar to what we have above: spaceNames().then(receivedFromSpaceNames => console.log(receivedFromSpaceNames))
 
-// TODO: Understand this what's going on and how .then() works properly.
+// UNDERSTOOD. then() takes whatever was returned from previous step and does something on it. We can chain multiple then() together.

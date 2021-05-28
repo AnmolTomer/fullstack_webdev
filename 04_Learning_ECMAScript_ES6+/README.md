@@ -285,8 +285,34 @@ console.log(countdown.next());
 
 - We saw in [06_02/script.js](06_02/script.js) to get data from an API, but that looked like a lot of work right. Now we look at fetch, fetch is a function that works natively in browser. There are also packages that work with Node like node-fetch and isomorphic-fetch to do something similar.
 
-- Fetch just takes in the URL of our API and prints it to console.
+- Fetch just takes in the URL of our API and gives us the entire Response of the API.
 
 - Ref: [06_03/script.js](06_03/script.js)
 
-##
+## 06_04 Using async/await syntax
+
+- Async functions return a promise, and resolved value of the function will be whatever you return from the function. We will have our delay function from before. It returns a promise which sets a timeout for given seconds.
+
+- Async/Awaita allows a developer to write more cleaner and more readable code. It's basically asynchronous code with a synchronous code structure. As we have these await statements it looks a bit more clear in our code and helps with debugging too.
+
+- Ref: [06_04/script.js](06_04/script.js)
+
+## Incroporate fetch with async/await
+
+- We have seen async/await as well as fetch, now we try to use it together. `fetch()` by definition is asynchronous. We are waiting to get some data back. So we create a function called `githubRequest`.
+
+- We create an async function using the async keyword and then we wait for all sorts of things to occur in the body of this function. First we use await to wait for response from API. Then we convert that response to json and then we can console log it. We have done that with Github api here.
+
+- So this syntax will be used a lot where you go through async, await, fetch.
+
+- Ref: [06_05/script.js](06_05/script.js)
+
+![](https://i.imgur.com/T5XhJnv.png)
+
+---
+
+# 07. Conclusion
+
+- Now that you are aware of advanced concepts such as classes, promises, async await fetch, making api requests, generators, arrow functions, spread operators now would be a good time to check out some libraries that are used to build modern web applications such as React, Angular, Vue, Svelte.
+
+- These are libraries and frameworks that we could use to build our own applications. We will see a lot of features for this course used in combination with those libraries and frameworks.

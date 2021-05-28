@@ -35,11 +35,8 @@ const spacePeople = () => {
 
 // call spacePeople() and then console log the data to our console.
 
-spacePeople().then(
-    (spaceData) => {
-        console.log(spaceData)
-    },
-    (err) => console.error(new Error("Can't load people.", err))
-)
+spacePeople().then((spaceData) => {
+    console.log(spaceData)
+}).catch((err) => console.log(new Error("Can't load people.", err)))
 
-// TODO: Understand parsing of response and promise.
+// ✅ we call the spacePeople() and use .then() to get the resolves logic and console.log if .then() is not working we do console.log() of err using .catch()
