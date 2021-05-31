@@ -175,6 +175,8 @@ fi
 
 - `git diff` by default compares the working directory against the staging tree. To view only changes that are in staging area, which there are we will do `git diff --staged` and this will show us only the changes that are there in the staging area. Stage is an alias for cached. `git diff --cached` will show the same results as would --staged flag when passed to git diff. For more info check [this](https://stackoverflow.com/a/47684920/9719106) answer.
 
+- `git diff` compares the changes to working directory files to the staging index, while `git diff --staged` compares staged files to the repository versions.
+
 ![](https://i.imgur.com/6paRDqV.png)
 
 - We have seen how to add and edit files, now to use git to track files when they are deleted. There are 2 techniques when it comes to delete files. First, is deleting the file on your own. You can then commit the change to the repository by telling git to add this change. If you deleted a file and you want to tell git to stage this change then you would do `git rm name_of_file_deleted.txt`. This will place the file we deleted change to staging area. Then we can just commit that change, and working tree is clean.
@@ -182,3 +184,41 @@ fi
 - Another method is to tell git to remove a file using `git rm file_to_delete.txt`, this removal is done using unix remove command, so it has been permanently removed. It still exists in the repository, so if we needed a copy of it, we could get a copy from there, but the remove that it performed is a little different than sending file to recycle bin. Deleting like this will add the file to the staging area automatically, making this a little bit more convenient. Telling git to remove the file means git will trash the file using unix rm command and then add it to staging area as well. All we have to do is git commit with message on deleted file.
 
 - There are 2 techniques for moving and renaming files in git. First is making changes directly using file explorer of your OS, and then doing git add, git commit. Here the git status says that `file_old_name.ext` has been deleted and `file_new_name.ext` is untracked, essentially taking it as a new file that was created while old file was deleted. If between two files there is a 50% or more similarity then when we move the deleted and newly added file to staging area, git recognizes it and labels it as `renamed` file. Second method is done using CLI, it just relies on the fact that moving a file and renaming a file are essentially the same thing. `git mv existing_name_of_file.ext new_file_name.ext` this will rename the file using move command. Now if you check git status, it will directly add the file to staging directory without the need to use add command and adds `renamed` label to it.
+
+> Which of these methods is best to deal with a file called this_file.txt that should not be deleted but should no longer be referenced when git status is used?
+
+- Move this_file.txt from the project directory and use git rm this_file.txt to remove the file. Though it's possible to instruct Git to ignore a file in the project directory, moving a file from the directory will result in a prompt from git status to remove the file with git rm, and executing this instruction means the file will no longer be tracked or noticed by Git.
+
+> How is staging an edited file different from staging a new file?
+
+- Both require `git add` to stage them. git add will stage any file, regardless of the kind of change it has created in the repository.
+
+> If the output of `git status` reveals that file file1.php is untracked, what is true about the file?
+
+- There will be no record of further changes made on file1.php. Until the file has been staged with git add, changes will not be recorded by Git.
+
+> If a user must use `git reset HEAD tabs.js` to unstage tabs.js, which command likely created the need to reset the HEAD?
+
+- `git add .` If the file tabs.js must be unstaged, it was staged with either git add tabs.js or git add .. This might become necessary in situations where the user does not wish to add a file to the repository or even does not want the current changes in that file to be part of the next commit.
+
+> The output of git status is the following text, the last line in green: Changes to be committed: Which action did not create this result?
+
+```
+(use "git reset HEAD <file>..." to unstage)
+
+deleted: file1.php
+```
+
+- file1.php was deleted with an operating system tool rather than git rm file1.php Green text denoting a file deletion means this deletion has already been staged for the next commit. If a file is deleted without using git rm, the deletion notice from git status will be red.
+
+> How does committing an edited file affect the Git architecture's trees?
+
+- The commit moves the file from the staging index to the repository. Just like adding a new file to the repository, committing the file moves it from the staging index to the repository.
+
+> What is the most efficient way to rename a file in a repository?
+
+- Use `git mv` with the file name. git mv is the most efficient way to both move a file to a new location and rename the file.
+
+> In which situation should you use `git diff`?
+
+- to observe specific changes from the original version of a file. git diff displays only the lines that have changed between two versions of a file.
