@@ -222,3 +222,15 @@ deleted: file1.php
 > In which situation should you use `git diff`?
 
 - to observe specific changes from the original version of a file. git diff displays only the lines that have changed between two versions of a file.
+
+---
+
+# 06. Working on a real project
+
+- `git diff --color-words`: This will show only the words that are different instead of showing + and - for entire lines.
+
+- There's a shortcut that allows us to stage and commit those changes. Normally, we add to staging area and once we are happy with staged changes we commit them to the repository. If we are already sure that we want to commit all the changes then we can skip adding to staging area step. This is what this shortcut does, and we can use this by doing `git commit -a file.txt` -a is same as `git commit --all file.txt`. This tells git to commit all the files. It stages and commits all changes to tracked files. `git commit --all` might include extra changes that you have forgotten that you have made, and this doesn't includes untracked files. If there is a new file you have added, you'd have to add and commit it separately.
+
+- After you do `git commit -am "Your commit message"` this will add files directly to the repository. On doing git status, now we would see `nothing to commit, working tree clean`.
+
+- We have made some changes in git by now, git is able to track our changes. When we want to go back and review our changes at a later date, that's when we would want to view a previous commit. To do so we will use `git show <commit_ID>`. you can get commit id from `git log`. This will give a diff of all the changes that we made. In paginator press f to go forward, b to go backward and q to quit. `git show <commit_ID> --color-words` to show us the changes on the words that were changed.
