@@ -234,3 +234,11 @@ deleted: file1.php
 - After you do `git commit -am "Your commit message"` this will add files directly to the repository. On doing git status, now we would see `nothing to commit, working tree clean`.
 
 - We have made some changes in git by now, git is able to track our changes. When we want to go back and review our changes at a later date, that's when we would want to view a previous commit. To do so we will use `git show <commit_ID>`. you can get commit id from `git log`. This will give a diff of all the changes that we made. In paginator press f to go forward, b to go backward and q to quit. `git show <commit_ID> --color-words` to show us the changes on the words that were changed.
+
+- `Compare Commits`: `git diff <old_commit_id>..<new_commit_id>`. This will create a diff file comparing two different versions and show what changed between those. We can also use --color-words to see the changes specifically. This allows us to compare 2 commits.
+
+- Multiline commit message: This can be done by typing `git commit -a` this will open your text editor and open up `COMMIT_EDITMSG`, and we can add multiple lines of message. If we do `git log --oneline` this gives first line of commit message. If you do commit without -m then git will open your default text editor for multiline commit message.
+
+- An atomic commit is a small commit, which affects only a single aspect. To have commits grouped together by topic. As small as possible and related to one particular bug, upgrade, or fix. This makes our commits easier to understand, to work with and to find bugs. This prevents a commit from becoming a huge mishmash of 80 new files added to fix 30 issues in one go which is hard to test and rectify. It improves collaboration and easier to track changes.
+
+- You can do atomic commits by adding files that fix one specific issue at one time and then moving them to staging area and finishing the commit. Once you have added the changes of issue a to the repo then you can move the other files that fix the issue b specifically to staging area and commit them. This is a good practice.
