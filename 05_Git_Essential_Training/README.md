@@ -306,3 +306,59 @@ deleted: file1.php
 - `git checkout 53daff9b -- about.php` and then `git commit -am "Reverts about.php to version live in January 2019"` git checkout will pull the version of about.php from the needed commit, and that version will be included in the new commit.
 
 ---
+
+# 08. Ignore Files
+
+- Git does a good job of noticing when new files are added to the working directory or when files that are in the repo are changed in our working directory. What if we want some files to not track and ignore files with specific extensions altogether. To tell git to ignore a folder, file we can add the path to that file in .gitignore file.
+
+- Adding a file in `.gitignore` is a file where you tell git which files to ignore. Changes made to ignored files will be ignored by Git. Pattern matching (basic reg-ex) is allowed in .gitignore file. We can write file names, simple patterns such as _, ? and other similar regular expressions. E.g. if we want to ignore all txt files in logs directory we could add `logs/_.txt`in .gitignore file. We could use negative expressions, e.g. ignore all files that end in .php by adding`\*.php`but to include a specific php file we can do`!index.php`which means do not ignore index.php but ignore all other php extension files. If we want to ignore all files in the directory then we can just use a trailing slash after the name, e.g.`assets/videos/`would ignore all files that are inside videos directory.`#` can be used to add comments in .gitignore file.
+
+- What to ignore in a project depends on you, what language, framework you are working with, GitHub provides templates for .gitignore based on what language you are working with, that's a good place to check, and this option is given as initialize .gitignore when you create a new git repo. Compiled source code, packages and compressed files, logs and databased, node modules, os generated files, user uploaded assets, images, pdfs you won't want to upload.
+
+- If you go to [this](https://www.github.com/github/gitignore) link you can see github provided gitignore templates. There are gitignore files based on what language you are using.
+
+- **Globally ignore files**: If we want to ignore files globally in all our repositories, for this we need .gitignore file that works globally. This way .gitignore file becomes user specific instead of being repo specific. `git config --global core.excludesfile ~/.gitignore_global`
+
+- When we create a gitignore file, git ignores all the untracked files that matched a rule in the `.gitignore` file. However, git only applied those rules to untracked files, files that are already being tracked are not ignored. Say we have a file `db_config.txt` that has our database configuration and that has already been committed and is being tracked. Now we go to .gitignore file and tell it to ignore db_config.txt file. Now when we do changes to db_config.txt, .gitignore won't ignore the file, this is the problem we are trying to solve. So how to tell git to not track `db_config` file anymore ?
+
+- To tell git to start ignoring a file either we can remove the file, another method is to remove db_config from staging index and we can do this using `git rm --cached db_config.txt` you can't use stage the synonym of cached. Once you do `git rm --cached` on a file it will remove it from the repo but file will stay in your project and untracked if added to .gitignore file.
+
+- We can track empty directories in Git. Git be default is a file tracking system and tracks directories with files, individual files but ignores the directories with no files. It is useful when you want an empty directory to be included when user checks out the repo or clones it, maybe its a directory where users can place their images to be uploaded or some extra scripts. Most common way to do it is add a `.gitkeep` file into the directory. Now git will recognize this directory and directory will be tracked.
+
+- `touch temp/.gitkeep` in UNIX based systems creates this file and then empty directory will be tracked.
+
+> What steps can a user take to remove a personal file from the repository while keeping a local copy that won't be tracked by Git?
+
+- `git rm --cached personal.txt` add personal.txt to .gitignore `git commit -a` Using the "--cached" option with git rm will remove the file from the index without affecting the local copy. When the file name is then added to .gitignore and all changes committed to the repository, the local copy will remain but will no longer be seen by Git.
+
+> Why might packaging and distribution files and directories be included in a .gitignore template?
+
+- The files are not edited as source code is. .gitignore should include any files that do not need to be tracked by Git, including those that will not be edited by developers but that might change.
+
+> Using `git status` reveals Git does not see the directory "css". What steps can you take to troubleshoot?
+
+- Ensure css/ does not appear in the .gitignore file, and ensure there is a file of any type in the directory. There is a third location to check, as well -- the file at .git/info/exclude in the repository.
+
+> Which of these should not generally be included in the .gitignore file?
+
+- directories containing project code. Any user-specific or system-specific files should be included in the .gitignore file.
+
+> What is the conventional file name to ensure an otherwise empty directory is included in the repository?
+
+- .gitkeep Using .gitkeep for the filename is the convention, though any file name is acceptable.
+
+> Why might a user choose not to include a .gitignore file in the repository?
+
+- The files to be ignored are user- or system-specific. Files specific to a user's development environment, account, or computer system are neither needed in a repository nor are they advisable additions to a repository for the sake of security, particularly if the repository is shared and not used only locally.
+
+> After adding a file to your .gitignore, you type git status and see the file listed as untracked. Why is the .gitignore inclusion not successful?
+
+- The file was tracked before inclusion in .gitignore. Running `git rm --cached <filename>` will remove the file from tracking, and Git will begin to ignore it.
+
+> Which types of files should always be globally ignored?
+
+- no file types should always be ignored. Build files might be ideal to ignore, but they do not always need to be global ignores.
+
+> Which kind of file might be included in the file generated by this command: `git config --global core.excludesfile ./.gitignore_user`
+
+- log files created by multiple projects in separate repositories. Log files are created during run-time, so they are not ideal files to track in version control.
