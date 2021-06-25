@@ -303,3 +303,37 @@ console.log(light); // Will print headlamp to console.
 - When we make an HTTP request to an API, there are 3 possible states, pending or loading, success, failed. A lot of times when we make request to wrong url, or a resource we do not have access to in that case we may get a blank screen, and to tell our user when something has gone wrong we can incorporate useState calls based on the scenarios when data is not loaded.
 
 - This is how request to an API works. We have a loading state where we are waiting for the data when we are calling, we have a complete state where we have data we want and we present it and then there is error state when we get some issues. Handling these cases helps with tracking various issues that may arise.
+
+---
+
+# 06 React Testing
+
+## 06_01 Using Create React App as a testing platform
+
+- When we installed create react app, we also get a testing platform along with it. You can read more about it in docs section, testing section to read more about running tests on create react app.
+
+- We will create 2 files `functions.js` and `functions.test.js`. Any file that ends with `.test.js` is going to be run as a test. We have `functions.js` and this is where our functions will be present. We can run `npm test` and not `npm start`. npm test will run any sort of tests. `App.test.js` comes with create react app. This test is failing, as we have made our own changes, so we will remove the App.test.js file.
+
+- We will see how to write a test and how we can write a function to make that test pass in next section.
+
+## 06_02 Testing small functions with Jest
+
+- Syntax comes from Jest library that is automatically included when we use the create react app.
+
+- We give the test a name and write the test in test.js file, we pass a callback function, then we use expect assertion to call the function with a certain number, and then we use this matcher, we use this function to tell us, does value entered into function gives us the result of the test. Run `npm test` to start the test and show the results whether tests are passed or not.
+
+- We wrote a very simple test here, but the process of writing the test first and then watching them fail and then trying to get them to pass is what is known as test driven development.
+
+## 06_03 React Testing Library
+
+- Another test utility that is part of create react app is Testing Library. Testing library can be used with React or outside of react. It helps us to render elements so that we can test the output, to make sure that it matches our expectations.
+
+- We create an `App.test.js` file, we write some tests in it. We are trying to write a test if h1 is really there. In our test file we will import render from testing-library, then we write test using test function, we pass it a callback function.
+
+## 06_04 Testing Hooks with React Testing Library
+
+- Now that we know how to run some tests on components, we create a Checkbox.js and Checkbox.test.js. We create a test by Selecting Checkbox.
+
+- We have render and fireEvent imported from testing-library/react, we have selected our checkbox with the value it renders with for the first time, then we fire an event on checkbox by clicking it and then we expect the value of the checkbox to be true.
+
+---
