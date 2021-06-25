@@ -337,3 +337,42 @@ console.log(light); // Will print headlamp to console.
 - We have render and fireEvent imported from testing-library/react, we have selected our checkbox with the value it renders with for the first time, then we fire an event on checkbox by clicking it and then we expect the value of the checkbox to be true.
 
 ---
+
+# 07 React Router
+
+## 07_01 Installing React Router 6
+
+- When we create a react app, we are creating something that is a single page app. In single page app, instead of creating different files for different pages, we are going to create a single page and javascript is going to load information and change the UI. The tricky part when dealing with a SPA is we need to handle the routing somehow. How do we go from page to page ? This is where react router comes into picture.
+
+- We install the router by doing `npm install react-router@next react-router-dom@next`. We create `pages.js` in src directory.
+
+- `pages.js` will be responsible to keep track of all the pages that are part of our app.
+
+## 07_02 Configuring the router
+
+- We have our pages defined in `pages.js`, we need to build the router. Router lives in index.js file. This is where we pass all the info frou router to any nested components.
+
+- We import BrowserRouter as Router from react-router-dom, and we are using react-router-dom as we are on website, there are other routers present too for native mobile apps as well.
+
+- Next, we wrap our app component into the Router, this will give App component access to all the properties of the Router such as location, history and things like that.
+
+## 07_03 Incorporating Link Component
+
+- We can add links to move back and forth between pages. We can go to our homepage, present in `pages.js` file and there we will adjust it using link component.
+- useLocation hook has pathname property that we can access using dot notation that can tell the user, when a specific page is not available.
+
+## 07_04 Nesting links with React Router 6
+
+- We make adjustments to our pages.js file to create some nested components. We define a function called Services.
+
+- We nest the Services, History and Location content inside About route and then we go to pages.js and in About component, next to h1 we use Outlet, `this is responsible to display the nested components.`
+
+- About is parent route and then under it lies services, location and history routes.
+
+---
+
+# Resources
+
+- [React Docs](https://reactjs.org/docs/getting-started.html)
+- [React Native](https://reactnative.dev/)
+- [GraphQL](http://graphql.org/)
