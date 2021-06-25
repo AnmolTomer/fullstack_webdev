@@ -1,11 +1,20 @@
-// import React, {useState} from 'react';
+// import React from 'react';
 import React from 'react';
 import './App.css';
+import {Routes,Route} from "react-router-dom"
+
+import { Home,About,Events,Contact } from "./pages"
 // https://api.github.com/users/AnmolTomer
 function App5() {
         return (
             <div>
-                <h1>Hello React testing library</h1>
+                <Routes>
+                    {/* Create route for each individual component */}
+                    <Route path="/" element={<Home />}/>
+                    <Route path="/about" element={<About />}/>
+                    <Route path="/events" element={<Events />}/>
+                    <Route path="/contact" element={<Contact />}/>
+                </Routes>
             </div>
             )
 }

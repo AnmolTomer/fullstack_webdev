@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import {BrowserRouter as Router} from "react-router-dom"
 import reportWebVitals from './reportWebVitals';
 // import the component
 /* import App from './App'
@@ -10,7 +11,10 @@ import App3 from './App3'
 import App4 from './App4'*/
 import App5 from './App5'
 
-ReactDOM.render( <App5/ > ,
+ReactDOM.render( 
+  <Router>
+    <App5/ >
+  </Router> ,
   document.getElementById('root')
 );
 
