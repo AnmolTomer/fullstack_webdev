@@ -13,7 +13,7 @@ Course contains 17 modules and helps you to gain skills to work with both front 
 3. [JavaScript Essential Training](./03_JS_Essential_Training)
 4. [Learning ECMAScript 6+ (ES6+)](./04_Learning_ECMAScript_ES6+)
 5. [Git Essential Training: The Basics](./05_Git_Essential_Training)
-6. React.js Essential Training
+6. [React.js Essential Training](./06_React.js_Essential_Training)
 7. Angular Essential Training
 8. Node.js Essential Training
 9. SQL Essential Training
