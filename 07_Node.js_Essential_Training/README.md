@@ -43,3 +43,59 @@
 - This is what we mean when we say non blocking event driven IO. We have a single thread responding to the events in the order they are raised. This thread behaves asynchronously. If Chez Node becomes popular we can franchise it. Chez Node can be expanded by duplicating or forking the restaurant into a neighboring space and this is precisely how we host NodeJS Applications in the cloud.
 
 - NodeJS is single threaded, all of the users are sharing the same thread. Events are raised and recorded in the event queue, and are serviced/handled in the order they were raised. NodeJS is asynchronous which means that it can do more than one thing at a time. This ability to be non blocking is what makes NodeJS so fast and one of the many reasons why so many developers are building their web apps with NodeJS.
+
+---
+
+# 2. Setup Your Environment
+
+## 02_01 Using VSCode
+
+- If you already have a IDE that you prefer for JS, feel free to use that, if not, we would recommend VSCode which is free and open source. More about it [here](https://code.visualstudio.com/)
+
+## 02_02 Install NodeJS
+
+- NodeJS can be downloaded from [here](https://nodejs.org/en/). Install like normal application with a setup, check node version by using the command `node --version`.
+
+---
+
+# 3. Node Globals
+
+## 03_01 The global object
+
+- We create `firstFile.js`, and within our first file we are going to print hello world to the console. To run this file we will open the terminal and to run the file we will have to type `node firstFile.js`, and you will see hello world on terminal.
+
+- Sure we can create js files and see their output using node, but what's actually going on here is, console object that we use to log data to console is part of the global object. Everything in global object is available to us globally, this means we can use any of the objects or values that are available to us on the global object, within our JS files, so the global object contains all the objects, values and methods that we can use in a Node.js file without importing specific libraries.
+
+- We can see global objects in node js docs [here](https://nodejs.org/api/globals.html). These are all of the values, objects and functions available for us to use globally within any JS file.
+
+## 03_02 The require function
+
+- Another thing that is available to us globally is the name of the current file, as well as the full path to the directory that we are currently using. `console.log(__dirname)` will give us directory name and `console.log(__filename)` gives us file name.
+
+- Ref: [global.js](global.js)
+
+- Node.js also comes with some tools that allows us to manipulate and edit filepaths. We have to load these tools as they come in a separate module. But it's okay as another thing that's also available globally to us is `CommonJS` module pattern. This pattern is how we import other code into our files. There's a function called require(), and then there's an object called exports.
+
+- We import other external modules using `require()` function. Modules are just other js files containing re-usable code. We can either load modules that were shipped with our installation of nodejs or we can import modules we install in our project through npm or the ones we install globally.
+
+- `path` module is shipped with Node.js, and it gives us tools that we can use to work with path strings.
+
+- Every nodejs file that we create is referred to as a module. It contains its own code. When we want to load other modules, we must use the require function that is available to us on the global object.
+
+## 03_03 Argument variables with process.argv
+
+- Another important object that is available to us globally is the process object. So within our files, we create a new file [`globalProcess.js`](globalProcess.js).
+
+- Process object can be accessed globally and it contains information about the current process as well as tools to allow us to interact with that process. With process object we can get environment information, read env variables, communicate with terminal or parent processes, through standard I/O. We can also use it to exit the current process.
+
+- Another thing that we can do is to collect information from the terminal, when we load the application. There's a variable called `process.argv`, these are the argument variables that are sent to the process when we run it. When we console log process.argv we see that it is an array and it contains everything we typed to run the process. First command was node, hence it's full path at index 0, second arg is path to the current module that we are trying to run, that's at index 1.
+
+- Anything we type when we run a node file gets added to this `process.argv` array. Since `process.argv` is an array, we can work with it in similar manner we work with arrays. We could use array destructuring.
+
+- Ref: [globalProcess.js](globalProcess.js)
+
+## 03_04 Standard Output
+
+- We create a CLI based question answer app, we start with [question.js](./question.js). Another feature of process object is standard input and standard output. These two objects offer us a way to communicate with this process while it is running. For now we just use these objects to read and write data from the terminal.
+
+- Ref: [question.js](question.js)
