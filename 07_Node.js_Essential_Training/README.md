@@ -84,7 +84,7 @@
 
 ## 03_03 Argument variables with process.argv
 
-- Another important object that is available to us globally is the process object. So within our files, we create a new file [`globalProcess.js`](globalProcess.js).
+- Another important object that is available to us globally is the process object. So within our files, we create a new file [`globalProcess.js`](03_Node_Globals/globalProcess.js).
 
 - Process object can be accessed globally and it contains information about the current process as well as tools to allow us to interact with that process. With process object we can get environment information, read env variables, communicate with terminal or parent processes, through standard I/O. We can also use it to exit the current process.
 
@@ -92,10 +92,22 @@
 
 - Anything we type when we run a node file gets added to this `process.argv` array. Since `process.argv` is an array, we can work with it in similar manner we work with arrays. We could use array destructuring.
 
-- Ref: [globalProcess.js](globalProcess.js)
+- Ref: [globalProcess.js](03_Node_Globals/globalProcess.js)
 
-## 03_04 Standard Output
+## 03_04 Standard Output & 03_05 Standard Input
 
-- We create a CLI based question answer app, we start with [question.js](./question.js). Another feature of process object is standard input and standard output. These two objects offer us a way to communicate with this process while it is running. For now we just use these objects to read and write data from the terminal.
+- We create a CLI based question answer app, we start with [question.js](./03_Node_Globals/question.js). Another feature of process object is standard input and standard output. These two objects offer us a way to communicate with this process while it is running. For now we just use these objects to read and write data from the terminal.
 
-- Ref: [question.js](question.js)
+- Ref: [question.js](03_Node_Globals/question.js)
+
+## 03_06 Creating delay with setTimeout & 03_07 setInterval & 03_08 Report progress with setInterval
+
+- We started working with Node.js asynchronously by using event listeners. Another way we can work with Nodejs asynchronously is through the timing functions. Timing functions such as setTimeout, clearTimeout, setInterval and clearInterval work the same way they do in browser, and are available to us globally.
+
+- setTimeout takes in the function to execute when timer is finished, second argument is time to wait for this delay
+
+- setInterval takes a function to run and duration in which to repeat it, in our case we stop the setInterval when the function to print done is executed.
+
+- Ref: [timers.js](03_Node_Globals/timers.js)
+
+---
