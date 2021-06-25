@@ -279,3 +279,27 @@ console.log(light); // Will print headlamp to console.
 - Instead of hard coding into onChange events we can abstract it away into its own function. We can utilize `useReducer` hooks. `useReducer` takes in 2 arguments, first argument is the function, and second argument is initial state.
 
 - We have created a reducer function, that takes in the current state and returns a new state. Then we can use that function to update the state for the checkbox.
+
+---
+
+# 05 Asynchronous React
+
+## 05_01 Fetching Data with Hooks
+
+- One of the most common tasks that we need to perform as developers is to fetch data from remote sources. `api.github.com/users` gives us the list of all github users with their data.
+
+- We can go to [https://api.github.com/users/AnmolTomer](https://api.github.com/users/AnmolTomer) and this will give me all of my data as JSON object. From my react application we can make a call to this api and we use, useEffect to make this call.
+
+- So we have used useEffect to retrieve data from a source. Next, we see how to display data from an API.
+
+## 05_02 Displaying Data from an API
+
+- We have the entire object in the data variable, we can use dot notation to select the parts we want to display of the JSON object. We get the data using `useEffect` in [App4.js](first_react_app/src/App4.js), if data is not empty then we select the values from the json object and display it on the webpage using HTML elements.
+
+## 05_03 Handling loading states
+
+- What happens if we don't get the data? We see how to handle different states of data after we request i.e. err and data is what we will see here.
+
+- When we make an HTTP request to an API, there are 3 possible states, pending or loading, success, failed. A lot of times when we make request to wrong url, or a resource we do not have access to in that case we may get a blank screen, and to tell our user when something has gone wrong we can incorporate useState calls based on the scenarios when data is not loaded.
+
+- This is how request to an API works. We have a loading state where we are waiting for the data when we are calling, we have a complete state where we have data we want and we present it and then there is error state when we get some issues. Handling these cases helps with tracking various issues that may arise.
