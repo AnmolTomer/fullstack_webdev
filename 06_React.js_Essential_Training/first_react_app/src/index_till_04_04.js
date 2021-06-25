@@ -1,13 +1,13 @@
-// index.js for 04_05
+// Rename to index.js to use, make sure to rename other index.js to something else before running.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 // import the component
-import App3 from './App3'
+import App2 from './App2'
 
 ReactDOM.render(
-    <App3/>,
+    <App2/>,
   document.getElementById('root')
 );
 

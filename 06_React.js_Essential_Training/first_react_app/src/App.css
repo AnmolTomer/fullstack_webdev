@@ -13,6 +13,26 @@
   }
 }
 
+/* Green */
+.button1 {
+  background-color: #4CAF50;
+  padding: 15px 32px;
+  border: 4px;
+  margin: 8px 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Blue */
+.button2 {
+  background-color: #008CBA;
+  padding: 15px 32px;
+  border: 4px;
+  margin: 8px 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,6 +52,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

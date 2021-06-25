@@ -249,3 +249,33 @@ console.log(light); // Will print headlamp to console.
 - Destructuring is often used with React, when it comes to props object. Object destructuring can help us when we have a lot of property names.
 
 - Object destructuring will make the syntax in our components a little bit more cleaner, by destructuring the props object, and then array destructuring is going ot help us as well.
+
+## 04_03 Understand the useState Hook
+
+- Managing the state in a react application is really important. Most modern way to handle state variables in an app is to use a function called useState. Here we update the index.js to have App as the only component.
+
+- We include the `{useState}` from react library. When we console log useState() we see an array with 2 items, first at index 0 is undefined and at index 1 is a function. What useState is doing is that it returns an array. The first item in the array is our state variable, and then the second item is the function that we will use to update the state.
+
+- We pass in initial state as `happy` when our app first runs, and this means at position 0 in returned array we will have happy now. Now this is where we make use of array destructuring to pop out the first item in the array, we name it emotion, and console.log(emotion) will print emotion. Now we can manage the state variable happy to display the emotion somewhere in the component.
+
+- useState returns a pair, first item as state value and second value is a function that we can use to update the status. Usually it is `set_VarName`. We will add a button in our component, and based on what is there on button, we update the value of emotion. Inside button we will have an onClick handler, that calls setEmotion function.
+
+## 04_04 Working with useEffect
+
+- Another important hook that is part of react library is `useEffect`. It is used to manage side effects that aren't related to the components render. So things like console messages, loading data and sometimes animations can benefit from useEffect.
+
+- We will take a basic look at it now and then later in the course we dive deep into useEffect to fetch data. We import useEffect from react library. This allows us to do something that is not related to render, rather a side effect that gets executed. `useEffect` also takes in a `second argument` and this is called a `dependency array`. There are a couple of different ways we can manage this dependency array. If we pass in an empty array as second argument of `useEffect`, then the props and the state inside the effect, will always have initial values. So it really means that the effect won't be called again after the first render.
+
+- We can include emotion in dependency array if we want to run the effect every time we click on any of the emotions button on screen, instead of only running it once on first render. We can use this dependency array to keep track of values. useEffect will watch the state emotion's value and if it changes then it calls the function, in our case it does console log every time value of emotion changes.
+
+- We add secondaryEmotion using useState and using another useEffect we console log secondary emotion. When we add value of secondary and emotion in dependency array, then only when its value is changed it is logged on console otherwise it's not.
+
+## 04_05 Incorporating useReducer
+
+- Let's see how we can manage a checkbox's state using React. Ref: [App3.js](first_react_app/src/App3.js)
+
+- We want to handle the state of this checkbox. We do so using toggle function in `App3.js`. A reducer's function is that it takes in the current state and it returns a new state. toggle is the reducer in App3.js, as it takes the value of current state and changes it to another state.
+
+- Instead of hard coding into onChange events we can abstract it away into its own function. We can utilize `useReducer` hooks. `useReducer` takes in 2 arguments, first argument is the function, and second argument is initial state.
+
+- We have created a reducer function, that takes in the current state and returns a new state. Then we can use that function to update the state for the checkbox.
