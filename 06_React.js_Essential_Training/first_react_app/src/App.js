@@ -66,16 +66,33 @@ function Footer(props){
   )
 }
 
-function App() {
+// SecretComponent for logged in users, and RegularComponent for visitors to see
+
+function SecretComponent(){
+  return <h1>Secret information for authorized users only.</h1>
+}
+
+function RegularComponent(){
+  return <h1>Everyone can see this component. Please log in to view restuarant items and media content.</h1>
+}
+
+
+function App(props) {
+  if(props.authorized){
   return (
     <div className="App">
-      {/* Header is a tag here which is used to call the function Header defined above. */}
+      {/* Header is a tag here which is used to call the function Header defined above on line 5. */}
+
       <Header name = "Leonardo"/>
       <Main adjective="delicious" dishes={dishObjects}/>
-      {/* Use JS date data and put it in Footer as param */}
       <Footer year={new Date().getFullYear()}/>
+      {/* Use JS date data and put it in Footer as param */}
+      <SecretComponent/>
     </div>
-  );
+  );}else{
+    return <RegularComponent/>
+  }
+
 }
 
 // This will export the App function and we need to import this into our index file.

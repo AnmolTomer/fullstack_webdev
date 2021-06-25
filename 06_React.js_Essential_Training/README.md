@@ -226,3 +226,26 @@ function Header(props) {
   );
 }
 ```
+
+---
+
+# 04 React State in the component tree
+
+## 04_01 Conditional Rendering
+
+- Another thing that we can do within a component tree is render components conditionally. Say we have a secretComponent that only authorised users can see. We will have a regularComponent that everyone can see, when user is not logged in.
+
+- We render the components based on props passed to the App component. We will have a property in our [index.js](first_react_app/src/index.js) file called authorised, where we render the app component.
+
+## 04_02 Destructuring Arrays and Object
+
+- Allows us to assign variable names to items within the array. E.g. say you have an array with 3 items and you want to name only the last item then using commas `,` you may skip over the items you want and name the items as per your need.
+
+```js
+const [, , light] = ["boots", "tent", "headlamp"];
+console.log(light); // Will print headlamp to console.
+```
+
+- Destructuring is often used with React, when it comes to props object. Object destructuring can help us when we have a lot of property names.
+
+- Object destructuring will make the syntax in our components a little bit more cleaner, by destructuring the props object, and then array destructuring is going ot help us as well.

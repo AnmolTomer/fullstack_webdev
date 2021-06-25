@@ -37,7 +37,9 @@ ReactDOM.render(
 
   // Shorthand React Fragment
   <>
-    <App />
+    <App authorized={true}/>
+    {/* Use this authorized in App.js App component to decide which component to render.*/}
+
     <AppTwo />
   </>,
   document.getElementById('root')
