@@ -14,14 +14,19 @@ Course contains 17 modules and helps you to gain skills to work with both front 
 4. [Learning ECMAScript 6+ (ES6+)](./04_Learning_ECMAScript_ES6+)
 5. [Git Essential Training: The Basics](./05_Git_Essential_Training)
 6. [React.js Essential Training](./06_React.js_Essential_Training)
-7. Angular Essential Training
-8. Node.js Essential Training
-9. SQL Essential Training
-10. NoSQL Essential Training
-11. Learning REST APIs
-12. DevOps Foundations
-13. Test Automation Foundations
-14. Performance Testing Foundations
-15. AWS: Deploying and Provision
-16. Software Development Life Cycle (SDLC)
-17. AWS and React: Creating Full-Stack Apps
+7. [Node.js Essential Training](./07_Node.js_Essential_Training)
+8. SQL Essential Training
+9. NoSQL Essential Training
+10. Learning REST APIs
+11. DevOps Foundations
+
+---
+
+## Others
+
+- Angular Essential Training
+- Test Automation Foundations
+- Performance Testing Foundations
+- AWS: Deploying and Provision
+- Software Development Life Cycle (SDLC)
+- AWS and React: Creating Full-Stack Apps
