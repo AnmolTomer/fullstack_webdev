@@ -111,3 +111,63 @@
 - Ref: [timers.js](03_Node_Globals/timers.js)
 
 ---
+
+# 4. Node Modules
+
+## 04_01 Core Modules
+
+- We have seen globally available functions and objects, one such function is `require()` function. We used require() in previous section to load the path module.
+
+- We require path module, and this is a core module. We can use path module to link paths and nested directories.
+
+- Ref: [core.js](04_Node_Modules/core.js)
+
+## 04_02 Collect Information with readline
+
+- readline is a module that we can use to build an app that would ask questions to a terminal user. It's an interface around readable and writeable streams that allows us to easily write code that would prompt user and collect their answers.
+
+- Ref: [ask.js](04_Node_Modules/ask.js)
+
+## 04_03 Use readline functions
+
+- We created a collectAnswers function, to which we can simply send an array of questions. A callback to handle once we have all the answers. In this case we log the answers array. `collectAnswers` function takes array of questions as first argument as well as a callback to invoke once we are done. Then we create a new array of answers and we use readline rl to ask the first question, after that every other question is asked based on checking the condition if length of answers array is equal to questions array or not. When length of answers and questions array are same then we invoke the done callback and pass the answers there.
+
+- Ref: [questions.js](04_Node_Modules/questions.js)
+
+## 04_04 Export custom modules
+
+- In Node.js every JS file is its own module. We have been loading modules with the require function so far. The require function is part of the common JS module pattern, but it's only the first half of the pattern that loads the module, the other half is the one that exports the module i.e. module.exports. The mechanism that we use to export the data and functionality from the module.
+
+- Ref: [myModule.js](04_Node_Modules/myModule.js)
+
+- Whenever we want to load other JS files that we have created in our file system and files that are not part of node global collection or not installed via npm then we have to specify the path to the files.
+
+- NodeJS module system allows us to separate our functionality into separate files. We consume that functionality with the require function, and what gets returned by the require function is what we have exported with the module.exports function.
+
+## 04_05 Create A Module
+
+- We made questions.js, which had a function that will collect the answers from an array of questions and print it. This is a perfect case of reusable function and we should perhaps move it to its own module. We create a lib directory and add collectAnswers function to this lib folder. We will create this module by modifying the code to the questions.js file.
+
+- We create a lib folder and a collectAnswers function to this lib folder. We export the collectAnswers as a module using module.exports in [questionModule.js](04_Node_Modules/lib/questionModule.js) . This will allow consumers to name the function whatever they want, we will name the file as questionModule.
+
+- Now we create a [questionFromModule.js](04_Node_Modules/questionFromModule.js) and this will only have questions array and collectAnswers function from our questionModule.js.
+
+## 04_06 Custom Events with the EventEmitter
+
+- EventEmitter is a powerful tool that's shipped with NodeJS. The EventEmitter is NodeJS's implementation of the Pub-Sub design mechanism and it gives us a mechanism for emitting custom events, and wiring up listeners and handlers for those events.
+
+- Ref: [events.js](04_Node_Modules/events.js)
+
+- Events are raised in events.js and what we need to do next is handle them, and we do so using emitter's `.on()` function we can wire up a handler or function that handles custom events.
+
+- Event emitter gives us a way to raise and handle custom events. One other important feature of event emitter is that it's asynchronous. These events are raised when they happen.
+
+- In events.js we handle all our custom events using the on function and we raise the event based on user has entered exit or not.
+
+## 04_07 Improve a module with EventEmitter
+
+- In 04_05 we turned questions.js into a module that we exported using module.exports. If we look within our exercise files under the lib folder, there's a [questionModule.js](04_Node_Modules/lib/questionModule.js) and this is our module for collectAnswers function from [questions.js](04_Node_Modules/questions.js). We can improve this function by using eventEmitter. Now we try to improve the questionModule.js using EventEmitter.
+
+- Ref: [questionModule.js](04_Node_Modules/lib/questionModule.js)
+
+- If we want to raise an event every time user answered a question, right before we push the answer in answers array we can call emitter.emit() and we emit an answer event.
