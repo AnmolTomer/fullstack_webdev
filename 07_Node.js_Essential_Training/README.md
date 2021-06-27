@@ -239,3 +239,37 @@ fs.writeFile("./assets/notes.md", md.trim(), (err) => {
 - We can use fs.rename() to rename and move directories and to remove directories we make use of fs.unlink or unlinkSync function to remove files.
 
 ---
+
+# 6. Files and Streams
+
+## 06_01 Readable file streams
+
+- The stream interface provides us with technique to read and write data. We can use it to read and write data to files, to communicate with internet, to communicate with other processes.
+
+- Ref: [readStream.js](06_Files_and_Streams/readStream.js)
+
+- Process stdin is a readable stream, we read the data by listening to data events. The file system also comes with a method to create readable strings. We have lorem-ipsum.md in assets dir we will use that. We can create binary readStream or text readStream, for text stream we need to specify encoding format as second argument.
+
+- Reading using stream causes our nodejs application to use less memory, because instead of reading everything all at once and loading it into a buffer, we are reading files bit by bit and chunk by chunk. This gives us a lot of control as they raise events. We could also use readStream.once with callback to put the very first stream of data that's read on console.
+
+## 06_02 Writeable File Streams
+
+- We saw readable file streams in 06_01, we saw writeable stream in form of `process.stdout`. For this section refere [writeStream.js](06_Files_and_Streams/writeStream.js)
+
+- Here we define a readStream of lorum-ipsum.md file and we write its contents using a writeStream to a txt named myFile.txt. We read data from readStream and an event listener listens to data on terminal and writes it to myFile.txt.
+
+- Since readable streams are made to work with writeable streams, there are lots of common methods among them as well. If we take the process.stdin readable stream then we can pipe with to our writeStream. This will send it to writeStream, which will write it to the file specified in writeStream.
+
+## 06_03 Create child process with exec
+
+- NodeJS comes with a child process module. This allows us to execute external processes in our environment. In other words, our NodeJS app can run and communicate with other apps within the env that's hosted. Spawn and execute are 2 functions that we use to create child processes.
+
+- So far we have ran our node files from terminal. We create [exec.js](06_Files_and_Streams/exec.js) for this section. `cp.exec()` command can be used to execute any command on terminal, it has err to display the error on running the command, and stderr to view the error that is displayed on terminal if command is ran.
+
+- Here we used the execute function to execute external system commands.
+
+## 06_04 Create Child Processes with spawm
+
+- Here we go over spawn function. `exec()` is designed to handle synchronous processes. These are processes that run and close and split some data as an one time event. `exec()` isn't made to handle async processes. This could mean long running processes or processes that are waiting for input or anything that remains open.
+
+- Ref: [spawn.js](06_Files_and_Streams/spawn.js)
