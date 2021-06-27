@@ -273,3 +273,5 @@ fs.writeFile("./assets/notes.md", md.trim(), (err) => {
 - Here we go over spawn function. `exec()` is designed to handle synchronous processes. These are processes that run and close and split some data as an one time event. `exec()` isn't made to handle async processes. This could mean long running processes or processes that are waiting for input or anything that remains open.
 
 - Ref: [spawn.js](06_Files_and_Streams/spawn.js)
+
+---
