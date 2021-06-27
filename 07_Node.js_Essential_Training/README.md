@@ -171,3 +171,71 @@
 - Ref: [questionModule.js](04_Node_Modules/lib/questionModule.js)
 
 - If we want to raise an event every time user answered a question, right before we push the answer in answers array we can call emitter.emit() and we emit an answer event.
+
+---
+
+# 5. File System Basics
+
+## 05_01 List directory files
+
+- NodeJS also ships with a module that allows us to interact with file system. fs module can be used to list dir and create new files and folders, stream files, watch files, modify file permissions.
+
+- Ref: [list.js](05_File_System_Basics/list.js)
+
+- We use `readdirSync('<dirName>')` to read the file names of all files in a given dir. This function is executing synchronously. That means it is blocking code. JS stops everything it's doing until all the files in that directory are read, before processing any other line of the code that might be written below it.
+
+- Another way to read files is to make it nonblocking using `readdir` which is an asynchronous function. `readdir` reads the files within a directory but it doesn't stores it into a variable. Once the files within a dir are read, they will be passed to a callback function that we supply as the second argument. First argument of the callback function is any errors that have been thrown. Second arg of this callback function are files themselves.
+
+## 05_02 Read Files
+
+- We can also use the fs module to read the contents of a file. We create a new file readFile.js. `readFileSync` is blocking code. We can use the `readFile` function that is async in nature.
+
+- To read binary file such as an img with jpg format is we do not supply the encoding argument. We read the contents of a binary file into a NodeJS type that we call the buffer.
+
+## 05_03 Write and Append Files
+
+- File system module can also be used to create new files and write data to files.
+
+- There are 3 arguments that go into writeFile, address with name.ext of file to write, content to write, callback function with err as only parameter.
+
+```js
+fs.writeFile("./assets/notes.md", md.trim(), (err) => {
+  if (err) {
+    console.log(`An error has occured: ${err.message}`);
+    process.exit();
+  }
+  console.log("File Saved 💾✅");
+});
+```
+
+- Ref: [writeFile.js](05_File_System_Basics/writeFile.js)
+
+## 05_04 Directory Creation
+
+- Here we create directory using fs module.
+
+- First argument to `fs.mkdir()` is name of directory to create with path, callback handler that accepts error if it occurs. If we run the fs.mkdir second time and tell it to create the same directory again, then we get an error that says file already exists.
+
+- Filesystem has a function that we can use to check if directory already exists, this is done using `fs.existsSync`.
+
+- Ref: [directory.js](05_File_System_Basics/directory.js)
+
+## 05_05 Append Files
+
+- We can also use the fs module to append files.
+
+- We do not need filesystem to read json documents, we can directly go to append.js and import the json data by using require simply.
+
+- Ref: [append.js](05_File_System_Basics/append.js)
+
+## 05_06 Rename and Remove files
+
+- We may need to rename and remove files. The fs module has methods for that as well.
+
+- We use rename function to move and rename files, and unlink to delete files.
+
+## 05_07 Rename and Remove Directories
+
+- We can use fs.rename() to rename and move directories and to remove directories we make use of fs.unlink or unlinkSync function to remove files.
+
+---
