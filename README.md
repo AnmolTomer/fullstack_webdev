@@ -15,7 +15,7 @@ Course contains 17 modules and helps you to gain skills to work with both front 
 5. [Git Essential Training: The Basics](./05_Git_Essential_Training)
 6. [React.js Essential Training](./06_React.js_Essential_Training)
 7. [Node.js Essential Training](./07_Node.js_Essential_Training)
-8. SQL Essential Training
+8. [SQL Essential Training](./08_SQL_Essential_Training)
 9. NoSQL Essential Training
 10. Learning REST APIs
 11. DevOps Foundations
