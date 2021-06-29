@@ -9,3 +9,5 @@
 3. [Fundamental Concepts](03_Fundamental_Concepts/README.md)
 
 4. [Relationships](04_Relationships/README.md)
+
+5. [Strings](05_Strings/README.md)
