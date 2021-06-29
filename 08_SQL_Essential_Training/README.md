@@ -11,3 +11,5 @@
 4. [Relationships](04_Relationships/README.md)
 
 5. [Strings](05_Strings/README.md)
+
+6. [Numbers](06_Numbers/README.md)
