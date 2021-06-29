@@ -6,10 +6,12 @@
 
 2. [SQL Overview](02_SQL_Overview/README.md)
 
-3. [Fundamental Concepts](03_Fundamental_Concepts/README.md)
+3. [Fundamental Concepts](03_Fundamental_Concepts.md)
 
-4. [Relationships](04_Relationships/README.md)
+4. [Relationships](04_Relationships.md)
 
-5. [Strings](05_Strings/README.md)
+5. [Strings](05_Strings.md)
 
-6. [Numbers](06_Numbers/README.md)
+6. [Numbers](06_Numbers.md)
+
+7. [Dates and Times](07_Dates_Times.md)
