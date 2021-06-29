@@ -7,3 +7,5 @@
 2. [SQL Overview](02_SQL_Overview/README.md)
 
 3. [Fundamental Concepts](03_Fundamental_Concepts/README.md)
+
+4. [Relationships](04_Relationships/README.md)
