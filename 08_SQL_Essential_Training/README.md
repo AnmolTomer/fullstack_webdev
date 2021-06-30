@@ -15,3 +15,5 @@
 6. [Numbers](06_Numbers.md)
 
 7. [Dates and Times](07_Dates_Times.md)
+
+8. [Aggregates](08_Aggregates.md)
