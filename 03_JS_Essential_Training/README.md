@@ -1,4 +1,4 @@
-# JavaScript Essential Training
+# 3. JavaScript Essential Training
 
 ## 0. Preface
 

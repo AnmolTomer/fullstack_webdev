@@ -1,4 +1,6 @@
-# Contents
+# 8. SQL Essential Training
+
+## Contents
 
 0. [Introduction & Installation](00_01_Intro_Installation/README.md)
 

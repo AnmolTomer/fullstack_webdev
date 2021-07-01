@@ -1,4 +1,6 @@
-# 0. Introduction
+# 7. NodeJS Essential Training
+
+## 0. Introduction
 
 ## 00_01 Learn the Node.js Fundamentals - Welcome
 

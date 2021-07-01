@@ -1,3 +1,5 @@
+# 5. Git Essential Training
+
 # 0. Introduction
 
 - Using git as a src code management tool is an essential skill to have for all web developers. Git helps us to manage the code in a project as we develop new features, helps to find and fix problems, and simplifies collaboration with other developers.

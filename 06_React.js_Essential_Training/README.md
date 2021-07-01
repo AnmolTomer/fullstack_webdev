@@ -1,3 +1,5 @@
+6. ReactJS Essential Training
+
 # 0. Introduction
 
 - React is one of the most popular libraries used to build user interfaces, and companies like Twitter, Netflix, AirBNB and PyaPal use it to power their front-end experiences.

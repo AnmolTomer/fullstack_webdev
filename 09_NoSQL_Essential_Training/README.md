@@ -1,4 +1,4 @@
-# NoSQL Essential Training
+# 9. NoSQL Essential Training
 
 # 00. Introduction
 
