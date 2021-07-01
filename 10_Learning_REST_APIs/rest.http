@@ -1,0 +1,2 @@
+# Get list of most recent posts on a wordpress website
+OPTIONS https://www.villagevoice.com/wp-json/wp/v2/posts
