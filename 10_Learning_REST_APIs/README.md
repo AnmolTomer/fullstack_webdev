@@ -274,3 +274,57 @@
 - What is a "resource"? Any information that can be named can be a resource.
 
 ---
+
+# 3. Response
+
+## 03_01 Response Header
+
+- Anytime we send a request to an API, the API returns some form of response to tell us what happened on its end. This response comes in the form of a head section and whatever content the resource provided. This head section isn't normally seen by us, but instead used by the client to handle the returned data. Every response from a REST API will have a head section and the contents of head will vary depending on the method you used and what kind of resources you requested.
+
+- To get just the head section of a response, we can send a head request to any resource. E.g. `HEAD https://www.villagevoice.com/wp-json/wp/v2/posts`
+
+![](https://i.imgur.com/O4Rcg25.png)
+
+- We learn what protocol was used, and we get the HTTP status message, in case above `200 OK`. Head requests will only return 200 OK if we hit a resource that actually exists or 404 NOT FOUND if the URI was pointing at nothing. Type of server that delivered the content, date and time, and other details are conveyed to the client to figure out how to parse the data and perform next actions.
+
+- Depending on the complexity of REST API and dataset it manages the response header will change. For our purposes most important part is HTTP status message at the very top.
+
+## 03_02 HTTP Status Messages
+
+- The HTTP response status codes at the top of the REST response header gives the client an immediate notification about the status of the request-response pair. The client uses these response codes, to identify success and failures and automatically respond with next steps. The HTTP response status codes are split into five main groupings.
+
+| Status Code |   Meaning    |
+| :---------- | :----------: |
+| 1xx         | Information  |
+| 2xx         |   Success    |
+| 3xx         | Redirection  |
+| 4xx         | Client Error |
+| 5xx         | Server Error |
+
+- Status codes of 100 format are rare and informational in nature. Mostly, these are used to inform the client about the status of the server, typically to wait for the server to finish so something like, I got your request, and I am processing it, hold on, sent by server to client or things like I have an open connection for you please send a request to the client from server. Generally, we don't see 100 codes much at all.
+
+- Status codes of 200 format are success message, 200 meaning OK, 201 created, 204 No Content and so on.
+
+- Status Codes of 300 format indicate redirection. The client is provided with a new URL to follow to get to the resource. These codes include 301 for moved permanently, which tells the client to use the new URI for all future requests, 302/303 for found at this other url, there is also 307 for temporary redirect and 308 for permanent redirect. Important thing is if you are handling redirects in your client, or you are generating redirect messages when you build your own REST APIs, you have to account for all these different variants and figure out which one of these response codes you want to use to make things clear. Because unfortunately, the 300 response code set is quite confusing.
+
+- Status codes of 400 format, signal client error. 400 for bad request, i.e. the request is malformed or too large or similar, 401 meaning unauthorized, i.e. client lacks proper authentication to access the resource, 403 forbidden meaning the request is outright refused by the server, typically because the client is not logged in, or doesn't have the correct permissions. 404 for not found, i.e. resource doesn't exists in the first place and 405 meaning that method not allowed, this happens when you try to use a http verb like post on a resource that can only receive GET requests.
+
+- Status code of 500 formats signal server errors. 501 for internal server error, meaning something went wrong on the server end. 502 bad gateway meaning the server acts as a literal gateway or proxy and received an invalid response from whatever it is trying to connect to. The fairly common 503 service unavailable which is encountered when a server in overloaded or temporarily unavailable.
+
+- More on HTTP Status Codes [Here](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+
+## 03_03 Request and Authorization/Authentication
+
+- The response you get from an API depeends on authorization level you have when you make the request. Most REST APIs provide leveled access, meaning all users can submit limited GET, HEAD and OPTIONS requests. Some users can submit POST requests, and a rare few users can submit PUT, PATCH and DELETE requests. To get a quick view of this, we can send two HEAD requests to the same resource, first an unauthenticated request, for this we will see that Allow header will only has GET option. When we send request with authorization we get allow header with GET, POST, PUT, PATCH, DELETE. Effectively this means that once you have provided the right authorization token in your request, you will have full control over the resource. Expires, Cache-Control and Keep-Alive are additional headers that tell the client for how long the credentials are valid, and when you might be kicked out and will have to provide authentication again and so on.
+
+- When interacting with the REST API in real world, including the wordpress REST API, we will typically encounter more robust authorization protocols like JSON Web Tokens `JWT` and `OAuth2` that are encrypted and require multiple levels of authorization.
+
+## 03_04 FAQs
+
+- An authorization header is used to change the authorization level of the currently logged in user. `False ❌`
+
+- Who reads the response header? Primarily the client application, but anyone can read it.
+
+- A status message in the 400 range means: Client error
+
+---
