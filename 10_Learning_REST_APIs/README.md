@@ -328,3 +328,52 @@
 - A status message in the 400 range means: Client error
 
 ---
+
+# 4. Request Response Pairs
+
+## 04_01 Discovery using OPTIONS
+
+- The first step in working with a REST API is discovery. For this we use an OPTIONS request. Post resource in wordpress is the collection for all the posts on the site, we can make a request in the following manner `OPTIONS https://www.villagevoice.com/wp-json/wp/v2/posts`. This gives us a default breakdown of all the methods and arguments available for this resource. But doesn't give us any of the actual data. OPTIONS gives us all the options we have for a particular resource.
+
+## 04_02 GET & 04_03 POST
+
+- To get the data from a resource we send a GET request. That means we want the data from the posts resource or the last 10 posts of a blog, we will send a GET request to the resource. `GET https://www.villagevoice.com/wp-json/wp/v2/posts`. What we get is a list of recent 10 posts on the site, each post is structures as a JSON object. It contains title, id, post data, content, link etc. If we want only 1 post we can send the argument `per_page=1` to get only 1 post.
+
+- Supplied with necessary authorization, a REST API can be used to create new resources. We can use REST API to create new resource in case of WordPress API. This is done by sending a POST request to the resource collection like the posts collection inside of WordPress. To create a new post via the REST API, we send a POST request to posts resource.
+
+```json
+POST https://www.villagevoice.com/wp-json/wp/v2/posts
+Content-Type: application/json
+{
+    "title": "A post created via the REST API",
+    "content": "This is the content of the post created with the REST API.",
+    "status": "publish",
+    "author": 1
+}
+```
+
+- Everytime we send a POST request to a REST API, it will return the entire resource back to us, once it is created. That way, the client can then use that resource immediately for error checking to make sure everything worked properly and also just to populate the client itself, so the user of the client can see that post once it is created.
+
+## 04_04 PUT/PATCH & 04_05 DELETE
+
+- We could either use POST, PUT or PATCH to make changes. We send options request first and then in methods header we see what all methods are allowed on the REST API. What's different between a POST request for creation of resource and PUT request for updation of content is that we only send what we want to change in the update reqests, be it put or patch verb.
+
+- DELETE request only works only on singleton resources for the most part, because deleting everything at once just makes no sense in most of the cases and to err on the side of caution it's better to be able to delete singleton resources at once because that's what we will need for most of the time.
+
+- We need proper authorization header in the request sent for deletion, otherwise no deletion would occur. On success of DELETE request we will get 200 OK, and in the returned response we see that status changes to `"trash"` from publish. This is because that's how WordPress works, when you delete a post it is moved to Trash Bin.
+
+- REST API tries to mimic the behavior of the application you have access to. So, if WordPress puts deleted post through UI in a trash, then the REST API will also put the deleted post in trash. So how can one delete the post entirely? As in remove it and get it out of the database, where it no longer exists?
+
+- For that we need to ask the REST API by sending in OPTIONS request to the singleton resource we wish to delete. We will look at methods available for that singleton resource, on doing `Ctrl+F` on returned response we see that there is a force attribute to bypass trash and force deletion, by default it is false but we can pass it as true and get our desired result. `DELETE https://www.villagevoice.com/wp-json/wp/v2/posts/15?force=true` will delete the post entirely and not just from trash.
+
+- We will get a 200 OK and if you check the trash or send a get request to the singleton resource, you would get a 404 NOT FOUND.
+
+## 04_06 FAQs
+
+- PUT/PATCH always do the same thing. FALSE, depends on the REST API definition of the methods.
+- Some requests get no response. This is a REST feature. FALSE
+- What is the GET method used to do? Get the requested resource.
+- What is the POST method used to do? Post a new resource with a unique ID on the REST server.
+- When you submit a DELETE request, what happens? If the resource exists and you have the correct authorization, the resource is deleted or its status is changed on the server.
+
+---

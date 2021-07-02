@@ -1,2 +1,1 @@
-# GET HEAD SECTION only
-HEAD https://www.villagevoice.com/wp-json/wp/v2/posts
+GET https://www.villagevoice.com/wp-json/wp/v2/posts?per_page=1
