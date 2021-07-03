@@ -10,9 +10,9 @@
 
 1. [DevOps Basics 🛠⚙](01_DevOps_Basics.md)
 
-2. DevOps: A Culture Problem ❓
+2. [DevOps: A Culture Problem ❓](02_DevOps_A_Culture_Problem.md)
 
-3. The Building Blocks of DevOps 📦📦
+3. [The Building Blocks of DevOps 📦📦](03_DevOps_Building_Blocks.md)
 
 4. Infrastructure Automation ⚡⚡
 
