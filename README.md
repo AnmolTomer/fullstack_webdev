@@ -16,11 +16,15 @@ Course contains 17 modules and helps you to gain skills to work with both front 
 6. [React.js Essential Training](./06_React.js_Essential_Training)
 7. [Node.js Essential Training](./07_Node.js_Essential_Training)
 8. [SQL Essential Training](./08_SQL_Essential_Training)
-9. NoSQL Essential Training
-10. Learning REST APIs
-11. DevOps Foundations
+9. [NoSQL Essential Training](09_NoSQL_Essential_Training/README.md)
+10. [Learning REST APIs](10_Learning_REST_APIs/README.md)
+11. [DevOps Foundations](11_Devops_Foundations/README.md)
 
 ---
+
+## Learning Path Completion Certificate
+
+![](https://i.imgur.com/6ggwfj9.png)
 
 ## Others
 

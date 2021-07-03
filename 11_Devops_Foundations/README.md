@@ -14,7 +14,7 @@
 
 3. [The Building Blocks of DevOps 📦📦](03_DevOps_Building_Blocks.md)
 
-4. Infrastructure Automation ⚡⚡
+4. [Infrastructure Automation ⚡⚡](04_Infrastructure_Automation.md)
 
 5. Continuous Delivery 🚚🚚
 
@@ -23,3 +23,5 @@
 7. Additional DevOps Resources 📚🧾
 
 8. The Future Of DevOps 🔎🥂
+
+<!-- TODO: 4 to 8 notes not done right now, felt too theoritical. -->
